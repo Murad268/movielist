@@ -1,4 +1,4 @@
-import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Routes, Navigate} from 'react-router-dom';
 import { Suspense } from 'react';
 import Header from './components/Header/Header';
 import MainPage from './containers/MainPage';
@@ -8,7 +8,8 @@ function App() {
     <Header/>
     <Suspense fallback="loading...">
       <Routes>
-        <Route path='/' element={<MainPage/>}/>
+        <Route path="/" element={<Navigate to="/popular" replace/>} ></Route>
+        <Route path='/:category' element={<MainPage/>}/>
       </Routes>
     </Suspense>
   </Router>

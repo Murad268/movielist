@@ -1,7 +1,8 @@
 import React from 'react';
 import 'antd/dist/antd.min.css';
 import styles from './header.module.scss';
-import { Button, PageHeader, Dropdown, Menu  } from 'antd';
+import { Button, PageHeader, Dropdown, Menu, Select  } from 'antd';
+import { Link } from 'react-router-dom';
 import logo from '../../assets/icons/logo.png';
 const Header = () => {
 
@@ -12,51 +13,43 @@ const Header = () => {
           {
             key: '1',
             label: (
-              <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
+              <Link to="/latest" rel="noopener noreferrer" >
                 Latest
-              </a>
+              </Link>
             ),
           },
           {
             key: '2',
             label: (
-              <a target="_blank" rel="noopener noreferrer" href="https://www.aliyun.com">
+              <Link to="/now_playing" rel="noopener noreferrer" href="https://www.aliyun.com">
                 Get Now Playing
-              </a>
+              </Link>
             ),
           },
           {
             key: '3',
             label: (
-              <a target="_blank" rel="noopener noreferrer" href="https://www.luohanacademy.com">
+              <Link to="/popular" rel="noopener noreferrer" href="https://www.luohanacademy.com">
                 Polular
-              </a>
+              </Link>
             ),
           },
           {
             key: '4',
             label: (
-              <a target="_blank" rel="noopener noreferrer" href="https://www.luohanacademy.com">
+              <Link to="/top_rated" rel="noopener noreferrer" >
                 Top Rated
-              </a>
+              </Link>
             ),
           },
           {
             key: '5',
             label: (
-              <a target="_blank" rel="noopener noreferrer" href="https://www.luohanacademy.com">
+              <Link to="/upcoming" rel="noopener noreferrer" href="https://www.luohanacademy.com">
                 Upcoming
-              </a>
+              </Link>
             ),
-          },
-          {
-            key: '6',
-            label: (
-              <a target="_blank" rel="noopener noreferrer" href="https://www.luohanacademy.com">
-                All
-              </a>
-            ),
-          },
+          }
         ]}
       />
     );
@@ -67,11 +60,11 @@ const Header = () => {
             className={styles.header}
             ghost={false}
             extra={[
-            <Dropdown className={styles.header__dropdown} overlay={menu} placement="bottomLeft" arrow>
+            <Dropdown key="4" className={styles.header__dropdown} overlay={menu} placement="bottomLeft" arrow>
                <Button>Categories</Button>
             </Dropdown>,
-            <Button key="3">Movies</Button>,
-            <Button key="2">TV Shows</Button>,
+            <Button key="3">Favorites</Button>,
+            <Button key="2">Watch List</Button>,
             <Button className={styles.header__suggetsBtn} key="1">Suggest me</Button>,
             ]}>
                <div><img src={logo} alt="" /></div>

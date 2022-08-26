@@ -48,4 +48,5 @@ table {
 }
 body {
 	background: #121829 !important;
+	overflow-x: hidden;
 }

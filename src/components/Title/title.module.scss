@@ -1,5 +1,5 @@
 .title {
-   margin: 0 !important;
+   margin-top: 64px !important;
    font-family: 'Poppins' !important;;
    font-style: normal !important;;
    font-weight: 600 !important;;
@@ -15,7 +15,8 @@
    font-size: 12px !important;
    line-height: 16px !important;
    color: #BEB7FB !important;
-   margin-top: 64px;
+   margin-top: 16px;
+   width: 450px;
 }
 
 .title__search {

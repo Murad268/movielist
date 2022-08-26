@@ -1,0 +1,56 @@
+.movie {
+   position: relative;
+   height: 420px;
+   margin-left: 20px;
+   background: rgba(32, 40, 62, 0.8);
+   backdrop-filter: blur(80px);
+   border-radius: 12px;
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-end;
+   padding: 0 0 20px 16px;
+   &__name {
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 24px;
+      letter-spacing: 0.02em;
+      color: #EBEEF5;
+   }
+   img {
+      width: 266px;
+      position: absolute;
+      top: 8px;
+      left: 6px;
+      width: 95%;
+      height: 340px;
+      border-radius: 8px;
+   }
+   &__raiting {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(8px);
+      border-radius: 8px;
+      width: 59px;
+      height: 40px;
+      z-index: 10;
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+      color: #FFAD49;
+      padding: 8px 8px 8px 10px;
+      img {
+         width: 14px;
+         height: 14px;
+         margin: 4px 20px 0 0;
+      }
+      div {
+         margin-left: 15px;
+      }
+   }
+}

@@ -1,9 +1,10 @@
 import React from 'react';
-import Title from '../components/Title/Title';
+
+import MainList from '../components/MainList/MainList';
 const MainPage = () => {
    return (
       <>
-         <Title/>
+         <MainList/>
       </>
    );
 };
