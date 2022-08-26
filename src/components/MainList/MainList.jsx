@@ -20,7 +20,6 @@ const MainList = () => {
    }, [category])
 
    const movies = useSelector(state => {
-      console.log(state)
       const {appReducer} = state
       return {
          results: appReducer.movies.results,
