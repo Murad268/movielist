@@ -6,8 +6,9 @@ import { useParams, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { commentsLoad, searchMovie } from '../../store/actions';
 import styles from './mainList.module.scss';
+import nothing from '../../assets/images/nothing.png';
 const MainList = () => {
-   const {pathname} = useLocation()
+
    const {category} = useParams();
    const dispatch = useDispatch();
    const [value, setValue] = useState(1)
@@ -37,12 +38,14 @@ const MainList = () => {
       <>
          <Title setValue={setValue} setTerm={setTerm} term={term} category={category}/>
 
-         <Pagination className={styles.pagination} onChange={!!term?.length?(num) =>search(term, num):(value) => filter(category, value)} current={value}  total={movies.totalPage} />;
+         {
+            !!movies.results?.length? <Pagination className={styles.pagination} onChange={!!term?.length?(num) =>search(term, num):(value) => filter(category, value)} current={value}  total={movies.totalPage} />:null
+         }
          <Row style={{"padding": "38px 0 0 90px"}} gutter={[16, 16]}>
             {
-                movies.results?.map(movie => {
+                !!movies.results?.length?movies.results.map(movie => {
                   return <MainButton key={movie.id} movie={movie}/>
-               })
+               }):<div className={styles.empty}><img src={nothing} alt="" /></div>
             }
          </Row>
       </>
