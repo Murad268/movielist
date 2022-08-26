@@ -18,10 +18,10 @@ export function commentsLoad(category, page) {
    }
 }
 
-export function searchMovie(query) {
+export function searchMovie(query, page) {
    return async dispatch => {
       try{
-         await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=82918892663111fc45ffe32102bc5fe1&query=${query}`).
+         await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=82918892663111fc45ffe32102bc5fe1&page=${page}&query=${query}`).
          then((res) => {
             dispatch({
                type: SEARCH,
