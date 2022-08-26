@@ -2,10 +2,10 @@ import React from 'react';
 import 'antd/dist/antd.min.css';
 import styles from './header.module.scss';
 import { Button, PageHeader, Dropdown, Menu, Select  } from 'antd';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../assets/icons/logo.png';
 const Header = () => {
-
+  const navigate = useNavigate()
 
    const menu = (
       <Menu
@@ -53,7 +53,10 @@ const Header = () => {
         ]}
       />
     );
-
+      
+    const go = (pathname) => {
+        navigate("/"+pathname)
+    }
 
    return (
          <PageHeader
@@ -63,8 +66,8 @@ const Header = () => {
             <Dropdown key="4" className={styles.header__dropdown} overlay={menu} placement="bottomLeft" arrow>
                <Button>Categories</Button>
             </Dropdown>,
-            <Button key="3">Favorites</Button>,
-            <Button key="2">Watch List</Button>,
+            <Button onClick={() => go("favorites")} key="3">Favorites</Button>,
+            <Button  onClick={() => go("watch_list")} key="2">Watch List</Button>,
             <Button className={styles.header__suggetsBtn} key="1">Suggest me</Button>,
             ]}>
                <div><img src={logo} alt="" /></div>

@@ -26,14 +26,23 @@ const MainList = () => {
          totalPage: appReducer.movies.total_pages
       }
    })
+   const favorites = useSelector(state => {
+      const {favoritesReducer} = state
+         return  favoritesReducer.favorites 
+   })
+   const watchList = useSelector(state => {
+      const {watchReducer} = state
+         return  watchReducer.watchList 
+   })
+   const list = category==="favorites"?favorites:category==="watch_list"?watchList:movies.results
+   const page = category==="favorites"?Math.ceil(category.length/20):category==="watch_list"?Math.ceil(category.length/20):movies.totalPage
    return (
       <>
          <Title category={category}/>
-
-         <Pagination className={styles.pagination} onChange={(value) => filter(category, value)}  current={value} total={movies.totalPage} />;
+         <Pagination className={styles.pagination} onChange={(value) => filter(category, value)}  current={value} total={page} />;
          <Row style={{"padding": "38px 0 0 90px"}} gutter={[16, 16]}>
             {
-                movies.results?.map(movie => {
+                list?.map(movie => {
                   return <MainButton key={movie.id} movie={movie}/>
                })
             }

@@ -9,7 +9,7 @@ const favoritesReducer = (state=initialState, action) => {
       case ADD_FAVORITES:
          const addedFavorites = [...state.favorites, action.data]
          localStorage.setItem("favorites", JSON.stringify(addedFavorites))
-         console.log(state)
+       
            return {
             ...state,
             favorites: [...state.favorites, action.data]

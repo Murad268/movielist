@@ -1,4 +1,4 @@
-import { LOAD, SEARCH, LOAD_FAVORITE, ADD_FAVORITES, REMOVE_FAVORITES, ADD_WATCH_LIST } from "./types";
+import { LOAD, SEARCH, ADD_FAVORITES, REMOVE_FAVORITES, ADD_WATCH_LIST, REMOVE_WATCH_LIST } from "./types";
 import axios from "axios";
 export function commentsLoad(category, page) {
    return async dispatch => {
@@ -36,12 +36,7 @@ export function searchMovie(query) {
 }
 
 
-export function loadFavorite  (data) {
-   return {
-      type: LOAD_FAVORITE,
-      data
-   }
-}
+
 
 export function addFavorite(data) {
    return {
@@ -57,3 +52,16 @@ export function removeFavorites(id) {
    }
 }
 
+export function addWatchList(data) {
+   return    {
+      type: ADD_WATCH_LIST,
+      data
+   }
+}
+
+export function removeWatchList(id) {
+   return    {
+      type: REMOVE_WATCH_LIST,
+      id
+   }
+}
