@@ -3,6 +3,7 @@ import { Suspense } from 'react';
 import Header from './components/Header/Header';
 import MainPage from './containers/MainPage';
 import FavoritesAndWatchList from './containers/FavoritesAndWatchList';
+import MoviePage from './containers/MoviePage';
 function App() {
   return (
     <Router>
@@ -13,6 +14,7 @@ function App() {
         <Route path='/:category' element={<MainPage/>}/>
         <Route path={'/favorites'} element={<FavoritesAndWatchList/>}/>
         <Route path={'/watch_list'} element={<FavoritesAndWatchList/>}/>
+        <Route path={'/movie/:id'} element={<MoviePage/>}/>
       </Routes>
     </Suspense>
   </Router>

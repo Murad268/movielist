@@ -2,6 +2,7 @@ import React from 'react';
 import {Col} from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { addFavorite, removeFavorites, addWatchList, removeWatchList } from '../../store/actions';
+import { Link } from 'react-router-dom';
 import styles from './mainMovie.module.scss';
 import star from '../../assets/icons/Vector.png';
 import notFound from '../../assets/images/notfound.png';
@@ -17,7 +18,8 @@ const MainMovie = ({movie}) => {
    })
    return (
       <Col span={5} className={styles.movie}>
-         <div className={styles.movie__controlls}>
+        <Link to={`/movie/${movie.id}`}>
+        <div className={styles.movie__controlls}>
             <div  className="favorite">
                {favorites?.some(film=>film.id===movie.id)?
                <div onClick={()=>dispatch(removeFavorites(movie.id))}>💛</div>:
@@ -35,6 +37,7 @@ const MainMovie = ({movie}) => {
          }
          
          <div className={styles.movie__name}>{movie.title}</div>
+        </Link>
       </Col>
    );
 };
