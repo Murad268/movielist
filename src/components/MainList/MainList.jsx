@@ -1,5 +1,5 @@
-import React, {useEffect} from 'react';
-import {Row} from 'antd';
+import React, {useState, useEffect} from 'react';
+import {Row, Pagination} from 'antd';
 import Title from '../Title/Title';
 import MainButton from '../MainMovie/MainMovie';
 import { useParams } from 'react-router-dom';
@@ -8,20 +8,33 @@ import { commentsLoad } from '../../store/actions';
 import styles from './mainList.module.scss';
 const MainList = () => {
    const {category} = useParams();
-   const dispatch = useDispatch()
+   const dispatch = useDispatch();
+   const [value, setValue] = useState(1)
+   const filter = (cat, page) => {
+      dispatch(commentsLoad(cat, page));
+      setValue(page)
+   }
    useEffect(() => {
-      dispatch(commentsLoad(category));
+      filter(category, value)
+      setValue(1)
    }, [category])
+
    const movies = useSelector(state => {
+      console.log(state)
       const {appReducer} = state
-      return appReducer.movies
+      return {
+         results: appReducer.movies.results,
+         totalPage: appReducer.movies.total_pages
+      }
    })
    return (
       <>
          <Title category={category}/>
-         <Row style={{"padding": "68px 0 0 90px"}} gutter={[16, 16]}>
+
+         <Pagination className={styles.pagination} onChange={(value) => filter(category, value)}  current={value} total={movies.totalPage} />;
+         <Row style={{"padding": "38px 0 0 90px"}} gutter={[16, 16]}>
             {
-                movies?.map(movie => {
+                movies.results?.map(movie => {
                   return <MainButton key={movie.id} movie={movie}/>
                })
             }

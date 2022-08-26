@@ -1,0 +1,13 @@
+.pagination {
+   margin: 40px auto 0 auto;
+   width: max-content;
+   background: rgba(0, 0, 0, 0.2);
+   padding: 20px;
+   li {
+      background: rgba(255, 0, 0, 0);
+      a {
+         color: white;
+         font-weight: 700;
+      }
+   }
+}
