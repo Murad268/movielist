@@ -1,5 +1,12 @@
 import { LOAD, SEARCH, ADD_FAVORITES, REMOVE_FAVORITES, ADD_WATCH_LIST, REMOVE_WATCH_LIST, LOAD_DETAILS } from "./types";
+import {toast} from 'react-toastify'
 import axios from "axios";
+
+
+const addFavoriteVery = () => toast("movie added to favorites");
+const deleteFromFavaritesVery = () => toast("movie removed from favorites");
+const addWatchListVery = () => toast("movie added to watchlist");
+const deleteFromWatchListVery = () => toast("movie removed from watchlist");
 export function commentsLoad(category, page) {
    return async dispatch => {
       try{
@@ -39,6 +46,7 @@ export function searchMovie(query, page) {
 
 
 export function addFavorite(data) {
+   addFavoriteVery()
    return {
       type: ADD_FAVORITES,
       data
@@ -46,6 +54,7 @@ export function addFavorite(data) {
 }
 
 export function removeFavorites(id) {
+   deleteFromFavaritesVery()
    return {
       type: REMOVE_FAVORITES,
       id
@@ -53,6 +62,7 @@ export function removeFavorites(id) {
 }
 
 export function addWatchList(data) {
+   addWatchListVery()
    return    {
       type: ADD_WATCH_LIST,
       data
@@ -60,6 +70,7 @@ export function addWatchList(data) {
 }
 
 export function removeWatchList(id) {
+   deleteFromWatchListVery()
    return    {
       type: REMOVE_WATCH_LIST,
       id

@@ -8,7 +8,6 @@ import styles from './mainMovie.module.scss';
 const MainMovie = ({movie}) => {
    const dispatch = useDispatch();
    const data = useSelector(state => {
-      console.log(state)
       return {
          favorites: state.favoritesReducer?.favorites,
          watchers: state.watchReducer?.watchList

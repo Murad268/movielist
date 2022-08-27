@@ -4,6 +4,8 @@ import Header from './components/Header/Header';
 import MainPage from './containers/MainPage';
 import FavoritesAndWatchList from './containers/FavoritesAndWatchList';
 import MoviePage from './containers/MoviePage';
+import {ToastContainer} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 function App() {
   return (
     <Router>
@@ -17,7 +19,19 @@ function App() {
         <Route path={'/movie/:id'} element={<MoviePage/>}/>
       </Routes>
     </Suspense>
+    <ToastContainer
+            position='top-right'
+            autoClose={1000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+         />
   </Router>
+  
   );
 }
 
