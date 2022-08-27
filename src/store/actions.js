@@ -12,7 +12,7 @@ export function commentsLoad(category, page) {
          })       
       } catch(e) {
    
-
+           
       }
       
    }

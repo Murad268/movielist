@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {Row, Pagination} from 'antd';
 import Title from '../Title/Title';
 import MainButton from '../MainMovie/MainMovie';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { commentsLoad, searchMovie } from '../../store/actions';
 import styles from './mainList.module.scss';
@@ -25,7 +25,7 @@ const MainList = () => {
       filter(category, value)
       setValue(1)
       setTerm("")
-   }, [category])
+   }, [category]) // eslint-disable-line react-hooks/exhaustive-deps
   
    const movies = useSelector(state => {
       const {appReducer} = state

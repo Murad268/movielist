@@ -1,7 +1,7 @@
 import React from 'react';
 import 'antd/dist/antd.min.css';
 import styles from './header.module.scss';
-import { Button, PageHeader, Dropdown, Menu, Select  } from 'antd';
+import { Button, PageHeader, Dropdown, Menu  } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../assets/icons/logo.png';
 const Header = () => {
@@ -70,7 +70,7 @@ const Header = () => {
             <Button  onClick={() => go("watch_list")} key="2">Watch List</Button>,
             <Button className={styles.header__suggetsBtn} key="1">Suggest me</Button>,
             ]}>
-               <div><img src={logo} alt="" /></div>
+               <Link to="/"><img src={logo} alt="" /></Link>
          </PageHeader>
    );
 };

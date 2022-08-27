@@ -1,9 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {Row, Typography, Col} from 'antd';
 import styles from './fandw.module.scss'
 import MainButton from '../MainMovie/MainMovie';
 import empty from '../../assets/images/ae8ac2fa217d23aadcc913989fcc34a2---page-empty-page.jpg'
-import { useDispatch, useSelector } from 'react-redux';
+import {  useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import './fandw.module.scss'
 const FavAndWatch = () => {

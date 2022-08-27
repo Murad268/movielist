@@ -8,13 +8,13 @@ import 'antd/dist/antd.min.css';
 import styles from './movie.module.scss';
 import star from '../../assets/icons/Vector.png';
 const Movie = () => {
-   const { Header, Footer, Sider, Content } = Layout;
+   const {  Content } = Layout;
    const {Title} = Typography
    const {id} = useParams();
    const dispatch = useDispatch();
    useEffect(() => {
       dispatch(loadDetails(id))
-   }, [])
+   }, []) // eslint-disable-line react-hooks/exhaustive-deps
    const data = useSelector(state => {
       return {
          details: state.detailsReducer.details,
@@ -64,7 +64,7 @@ const Movie = () => {
          <Col offset={3} span={10}>
             <Title className={styles.movie__poster__title}>{data.details.title}</Title>
             <Content className={styles.movie__poster__desc}>{data.details.overview}</Content>
-            {/* <Content className={styles.movie__raiting}><Image preview={false}  width={14} height={14} src={star}/><Content style={{"marginLeft": "10px"}}>{+data.details.vote_average?.toFixed(1)}</Content></Content> */}
+            <Content className={styles.movie__raiting}><Image preview={false}  width={14} height={14} src={star}/><Content style={{"marginLeft": "10px"}}>{String(+data.details.vote_average?.toFixed(1))}</Content></Content>
             <Title level={4} className={styles.movie__poster__subtitle}>type</Title>
             <Content className={styles.movie__poster__content}>{data.details.budget?"movie":"tw-show"}</Content>
             <Title className={styles.movie__poster__subtitle}>Release Date:</Title>
@@ -74,13 +74,13 @@ const Movie = () => {
             <Title className={styles.movie__poster__subtitle}>Genres</Title>
             <Content className={styles.movie__genres}> {
                data.details.genres?.map((genre, i) => {
-                  return <Content key={genre.id} className={styles.movie__poster__content}>{genre.name}{i != 2?",":null}</Content>
+                  return <Content key={genre.id} className={styles.movie__poster__content}>{genre.name}{i !== 2?",":null}</Content>
                })
             }</Content>
          </Col>
       </Row>
       </>
-      // {+data.details.vote_average?.toFixed(1)}
+      
    );
 };
 

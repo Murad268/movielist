@@ -1,4 +1,4 @@
-import { ADD_FAVORITES, REMOVE_FAVORITES, ADD_WATCH_LIST } from "./types";
+import { ADD_FAVORITES, REMOVE_FAVORITES } from "./types";
 const initialState = {
    favorites:   localStorage.getItem('favorites')?JSON.parse(localStorage.getItem("favorites")):[]
 
