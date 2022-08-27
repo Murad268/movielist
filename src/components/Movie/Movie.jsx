@@ -1,9 +1,10 @@
 import React, {useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import { Layout, Row, Col, Typography, Image } from 'antd';
-import { loadDetails } from '../../store/actions';
+
 import { useDispatch, useSelector } from 'react-redux';
-import { addFavorite, removeFavorites, addWatchList, removeWatchList } from '../../store/actions';
+import { actions } from '../../store/actions/actionIndex';
+
 import { icons } from '../../utils/iconUtils';
 import styles from './movie.module.scss';
 import 'antd/dist/antd.min.css';
@@ -12,7 +13,7 @@ const Movie = () => {
    const {id} = useParams();
    const dispatch = useDispatch();
    useEffect(() => {
-      dispatch(loadDetails(id))
+      dispatch(actions.loadDetails(id))
    }, []) // eslint-disable-line react-hooks/exhaustive-deps
    const data = useSelector(state => {
       return {
@@ -39,21 +40,21 @@ const Movie = () => {
                <Row className={styles.movie__controlls}>
                   {
                      hasInFavorites?
-                     <Col onClick={() => dispatch(addFavorite(data.details))} className={styles.movie__addFav}>
+                     <Col onClick={() => dispatch(actions.addFavorite(data.details))} className={styles.movie__addFav}>
                         add favorite
                      </Col>
                      :
-                     <Col onClick={() => dispatch(removeFavorites(data.details.id))} className={styles.movie__removeFav}>
+                     <Col onClick={() => dispatch(actions.removeFavorites(data.details.id))} className={styles.movie__removeFav}>
                         remove from Favorite
                      </Col>
                   }  
                    {
                      hasInWatchList?
-                     <Col onClick={() => dispatch(addWatchList(data.details))} className={styles.movie__addWatch}>
+                     <Col onClick={() => dispatch(actions.addWatchList(data.details))} className={styles.movie__addWatch}>
                         add watch list
                      </Col>
                      :
-                     <Col onClick={() => dispatch(removeWatchList(data.details.id))} className={styles.movie__removeWatch}>
+                     <Col onClick={() => dispatch(actions.removeWatchList(data.details.id))} className={styles.movie__removeWatch}>
                         remove from watch list
                      </Col>
                   }  

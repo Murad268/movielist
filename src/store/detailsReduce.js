@@ -1,4 +1,4 @@
-import { LOAD_DETAILS } from "./types";
+import { types } from "./types/typeIndex";
 
 const initialState = {
    details: {}
@@ -6,7 +6,7 @@ const initialState = {
 
 const detailsReducer = (state = initialState, action) => {
    switch(action.type) {
-      case LOAD_DETAILS:
+      case types.LOAD_DETAILS:
          const details = action.data;
          return {...state, details }
       default:

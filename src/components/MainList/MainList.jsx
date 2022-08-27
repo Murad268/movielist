@@ -4,7 +4,8 @@ import Title from '../Title/Title';
 import MainButton from '../MainMovie/MainMovie';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { moviesLoad, searchMovie } from '../../store/actions';
+import { actions } from '../../store/actions/actionIndex';
+
 import styles from './mainList.module.scss';
 import nothing from '../../assets/images/nothing.png';
 const MainList = () => {
@@ -13,11 +14,11 @@ const MainList = () => {
    const [value, setValue] = useState(1)
    const [term, setTerm] = useState()
    const filter = (cat, page) => {
-      dispatch(moviesLoad(cat, page));
+      dispatch(actions.moviesLoad(cat, page));
       setValue(page)
    }
    const search = (term, page) => {
-      dispatch(searchMovie(term, page))
+      dispatch(actions.searchMovie(term, page))
       setValue(page)
    }
    useEffect(() => {

@@ -1,4 +1,4 @@
-import { ADD_FAVORITES, REMOVE_FAVORITES } from "./types";
+import { types } from "./types/typeIndex"
 const initialState = {
    favorites:   localStorage.getItem('favorites')?JSON.parse(localStorage.getItem("favorites")):[]
 
@@ -6,7 +6,7 @@ const initialState = {
 
 const favoritesReducer = (state=initialState, action) => {
    switch(action.type) {
-      case ADD_FAVORITES:
+      case types.ADD_FAVORITES:
          const addedFavorites = [...state.favorites, action.data]
          localStorage.setItem("favorites", JSON.stringify(addedFavorites))
        
@@ -14,7 +14,7 @@ const favoritesReducer = (state=initialState, action) => {
             ...state,
             favorites: [...state.favorites, action.data]
          }
-         case REMOVE_FAVORITES:
+         case types.REMOVE_FAVORITES:
             const {id} = action
             const afterDeleteFavorites = state.favorites.filter(favorite => favorite.id !== id)
             localStorage.setItem("favorites", JSON.stringify(afterDeleteFavorites))

@@ -2,7 +2,8 @@ import React from 'react';
 import {Col} from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { addFavorite, removeFavorites, addWatchList, removeWatchList } from '../../store/actions';
+import { actions } from '../../store/actions/actionIndex';
+
 import { icons } from '../../utils/iconUtils';
 import styles from './mainMovie.module.scss';
 const MainMovie = ({movie}) => {
@@ -16,19 +17,19 @@ const MainMovie = ({movie}) => {
 
    const addFav = (e) => {
       e.preventDefault();
-      dispatch(addFavorite(movie))
+      dispatch(actions.addFavorite(movie))
    }
    const removeFav = (e) => {
       e.preventDefault();
-      dispatch(removeFavorites(movie.id))
+      dispatch(actions.removeFavorites(movie.id))
    }
    const addWatch = (e) => {
       e.preventDefault();
-      dispatch(addWatchList(movie))
+      dispatch(actions.addWatchList(movie))
    }
    const removeWatch = (e) => {
       e.preventDefault();
-      dispatch(removeWatchList(movie.id))
+      dispatch(actions.removeWatchList(movie.id))
    }
    return (
       <Col span={5} className={styles.movie}>

@@ -1,4 +1,4 @@
-import { ADD_WATCH_LIST, REMOVE_WATCH_LIST } from "./types";
+import { types } from "./types/typeIndex"
 const initialState = {
    watchList:  localStorage.getItem('watchList')?JSON.parse(localStorage.getItem("watchList")):[]
 
@@ -8,14 +8,14 @@ const initialState = {
 
 const watchReducer = (state=initialState, action) => {
    switch(action.type) {
-      case ADD_WATCH_LIST:
+      case types.ADD_WATCH_LIST:
          const watchedavorites = [...state.watchList, action.data]
          localStorage.setItem("watchList", JSON.stringify(watchedavorites))
            return {
             ...state,
             watchList: [...state.watchList, action.data]
          }
-         case REMOVE_WATCH_LIST:
+         case types.REMOVE_WATCH_LIST:
           
             const {id} = action
             const afterDeleteWatched = state.watchList.filter(list => list.id !== id)
