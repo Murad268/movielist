@@ -27,19 +27,21 @@ const MainList = () => {
    }, [category]) // eslint-disable-line react-hooks/exhaustive-deps
   
    const movies = useSelector(state => {
-      const {appReducer} = state
       return {
-         results: appReducer.movies.results,
-         totalPage: appReducer.movies.total_pages
+         results: state.appReducer.movies.results,
+         totalPage: state.appReducer.movies.total_pages
       }
    })
+
    return (
       <>
+      
          <Title setValue={setValue} setTerm={setTerm} term={term} category={category}/>
          {
             !!movies.results?.length? <Pagination className={styles.pagination} onChange={!!term?.length?(num) =>search(term, num):(value) => filter(category, value)} current={value}  total={movies.totalPage} />:null
          }
          <Row style={{"padding": "38px 0 0 90px"}} gutter={[16, 16]}>
+           
             {
                 !!movies.results?.length?movies.results.map(movie => {
                   return <MainButton key={movie.id} movie={movie}/>
