@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 import {actions} from '../../store/actions/actionIndex';
 import styles from './title.module.scss'
 const Title = ({category, term, setTerm, setValue}) => {
-
   const dispatch = useDispatch();
   const onSubmit = () => {
       dispatch(actions.searchMovie(term, 1))
