@@ -1,4 +1,4 @@
-import { types } from "./types/typeIndex"
+import { types } from "../types/typeIndex"
 const initialState = {
    favorites:   localStorage.getItem('favorites')?JSON.parse(localStorage.getItem("favorites")):[]
 

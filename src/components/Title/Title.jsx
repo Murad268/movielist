@@ -1,14 +1,13 @@
 import React from 'react';
 import { Typography, Col, Row, Input, Space, Form } from 'antd';
 import { useDispatch } from 'react-redux';
-
-import { searchMovie } from '../../store/actions';
+import {actions} from '../../store/actions/actionIndex';
 import styles from './title.module.scss'
 const Title = ({category, term, setTerm, setValue}) => {
 
   const dispatch = useDispatch();
   const onSubmit = () => {
-      dispatch(searchMovie(term, 1))
+      dispatch(actions.searchMovie(term, 1))
       setValue(1)
   }
    return (
