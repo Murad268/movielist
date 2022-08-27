@@ -6,9 +6,7 @@ import { searchMovie } from '../../store/actions';
 import styles from './title.module.scss'
 const Title = ({category, term, setTerm, setValue}) => {
 
-   const { Title } = Typography;
-  
-   const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const onSubmit = () => {
       dispatch(searchMovie(term, 1))
       setValue(1)
@@ -17,8 +15,8 @@ const Title = ({category, term, setTerm, setValue}) => {
       <>
          <Row>
             <Col span={7} offset={2}>
-               <Title className={styles.title}>MovieDB</Title>
-               <Title className={styles.subtitle} level={5}>the {category.replace("_", " ")} movies</Title>
+               <Typography.Title className={styles.title}>MovieDB</Typography.Title>
+               <Typography.Title className={styles.subtitle} level={5}>the {category.replace("_", " ")} movies</Typography.Title>
                <Space className={styles.main} direction="vertical">
                   <Form onFinish={onSubmit}>
                      <Input value={term} onChange={e => setTerm(e.target.value)} className={styles.title__search} placeholder="Search Movies or TV Shows"  />

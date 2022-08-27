@@ -1,22 +1,20 @@
 import React from 'react';
 import {Col} from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
-import { addFavorite, removeFavorites, addWatchList, removeWatchList } from '../../store/actions';
 import { Link } from 'react-router-dom';
+import { addFavorite, removeFavorites, addWatchList, removeWatchList } from '../../store/actions';
+import { icons } from '../../utils/iconUtils';
 import styles from './mainMovie.module.scss';
-import star from '../../assets/icons/Vector.png';
-import notFound from '../../assets/images/notfound.png';
-import next from '../../assets/icons/right.png';
 const MainMovie = ({movie}) => {
    const dispatch = useDispatch();
-   const favorites = useSelector(state => {
-      const {favoritesReducer} = state;
-      return favoritesReducer.favorites
+   const data = useSelector(state => {
+      console.log(state)
+      return {
+         favorites: state.favoritesReducer?.favorites,
+         watchers: state.watchReducer?.watchList
+      }
    })
-   const watchers = useSelector(state => {
-      const {watchReducer} = state;
-      return watchReducer.watchList
-   })
+
    const addFav = (e) => {
       e.preventDefault();
       dispatch(addFavorite(movie))
@@ -38,19 +36,19 @@ const MainMovie = ({movie}) => {
         <Link to={`/movie/${movie.id}`} >
         <div className={styles.movie__controlls}>
             <div  className="favorite">
-               {favorites?.some(film=>film.id===movie.id)?
+               {data.favorites?.some(film=>film.id===movie.id)?
                <div onClick={removeFav}>💛</div>:
                <div onClick={addFav}>💙</div>}
             </div>
             <div className="watch">
-               {watchers?.some(film=>film.id===movie.id)?
+               {data.watchers?.some(film=>film.id===movie.id)?
                <div onClick={removeWatch}>👁️</div>:
                <div onClick={addWatch}>👁️‍🗨️</div>}
                </div>
          </div>
-         <div className={styles.movie__raiting}><img src={star} alt="" /><div>{String(+movie.vote_average?.toFixed(1))}</div></div>
+         <div className={styles.movie__raiting}><img src={icons.star} alt="" /><div>{String(+movie.vote_average?.toFixed(1))}</div></div>
          {
-            <img src={movie.poster_path?`https://image.tmdb.org/t/p/w500/${movie.poster_path}`:notFound} alt="" />
+            <img src={movie.poster_path?`https://image.tmdb.org/t/p/w500/${movie.poster_path}`:icons.notFound} alt="" />
          }
          
          <div className={styles.movie__name}>{movie.title} </div>

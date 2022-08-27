@@ -8,7 +8,6 @@ import { commentsLoad, searchMovie } from '../../store/actions';
 import styles from './mainList.module.scss';
 import nothing from '../../assets/images/nothing.png';
 const MainList = () => {
-
    const {category} = useParams();
    const dispatch = useDispatch();
    const [value, setValue] = useState(1)
@@ -37,7 +36,6 @@ const MainList = () => {
    return (
       <>
          <Title setValue={setValue} setTerm={setTerm} term={term} category={category}/>
-
          {
             !!movies.results?.length? <Pagination className={styles.pagination} onChange={!!term?.length?(num) =>search(term, num):(value) => filter(category, value)} current={value}  total={movies.totalPage} />:null
          }
