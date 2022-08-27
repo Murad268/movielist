@@ -18,7 +18,7 @@
       width: 100%;
       height: 100% !important;
       object-fit: fill;
-      border-radius: 40px;
+      border-radius: 40px !important;
    }
    &__sub {
       width: 560px;
@@ -37,6 +37,7 @@
    &__wrapper {
       width: 80%;
       margin: 152px auto 0 auto;
+      align-items: center
    }
    &__poster { 
       height: 690px;
@@ -87,7 +88,7 @@
    &__raiting {
       padding: 4px 8px;
       margin-top: 28px;
-      width: 70px;
+      width: max-content;
       height: 32px;
       background: rgba(0, 0, 0, 0.65);
       backdrop-filter: blur(8px);
@@ -104,6 +105,10 @@
      }
    }
    &__genres {
+      width:max-content;
       display: flex;
+      main {
+         margin-right: 10px;
+      }
    }
 }

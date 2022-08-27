@@ -27,8 +27,8 @@ const Movie = () => {
           </Layout>
        </Layout>
        <Row className={styles.movie__wrapper}>
-         <Col className={styles.movie__poster} span={10}><Image height={665} src={"https://image.tmdb.org/t/p/w500/"+details.poster_path}/></Col>
-         <Col offset={2} span={10}>
+         <Col className={styles.movie__poster} span={10}><Image width={480} height={720} src={"https://image.tmdb.org/t/p/w500/"+details.poster_path}/></Col>
+         <Col offset={3} span={10}>
             <Title className={styles.movie__poster__title}>{details.title}</Title>
             <Content className={styles.movie__poster__desc}>{details.overview}</Content>
             <Content className={styles.movie__raiting}><Image width={14} height={14} src={star}/><Content style={{"marginLeft": "10px"}}>{+details.vote_average?.toFixed(1)}</Content></Content>
