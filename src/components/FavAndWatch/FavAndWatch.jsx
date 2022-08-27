@@ -17,7 +17,6 @@ const FavAndWatch = () => {
       }
    })
    const moviesList = pathname === "/favorites"?movies.favorites:pathname === "/watch_list"?movies.watch_list:null
-   console.log(moviesList)
    return (
             <>
                <Col span={16} offset={2}><Title className={styles.title}>my {pathname.slice(1).replace("_", " ")} movies</Title></Col>
