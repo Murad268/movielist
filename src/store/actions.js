@@ -7,7 +7,7 @@ const addFavoriteVery = () => toast("movie added to favorites");
 const deleteFromFavaritesVery = () => toast("movie removed from favorites");
 const addWatchListVery = () => toast("movie added to watchlist");
 const deleteFromWatchListVery = () => toast("movie removed from watchlist");
-export function commentsLoad(category, page) {
+export function moviesLoad(category, page) {
    return async dispatch => {
       try{
          await axios.get(`https://api.themoviedb.org/3/movie/${category}?api_key=82918892663111fc45ffe32102bc5fe1&language=en-US&page=${page}`).
