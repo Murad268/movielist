@@ -28,14 +28,14 @@ const Movie = () => {
    return (
       <>
         <Layout className={styles.movie}>
-         <Image preview={false} height={480} src={"https://image.tmdb.org/t/p/w500/"+data.details.backdrop_path}/>
+         <Image preview={false} height={480} src={data.details.backdrop_path?"https://image.tmdb.org/t/p/w500/"+data.details.backdrop_path:icons.posterNot}/>
           <Layout className={styles.movie__sub}>
             <Typography.Title className={styles.movie__title}>{data.details.title}</Typography.Title>
           </Layout>
        </Layout>
        <Row className={styles.movie__wrapper}>
          <Col className={styles.movie__poster} span={10}>
-            <Image preview={false}  width={480} height={720} src={"https://image.tmdb.org/t/p/w500/"+data.details.poster_path}/>
+            <Image preview={false}  width={480} height={720} src={data.details.poster_path?"https://image.tmdb.org/t/p/w500/"+data.details.poster_path:icons.notFound}/>
           
                <Row className={styles.movie__controlls}>
                   {
