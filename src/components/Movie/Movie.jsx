@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { Layout, Row, Col, Typography, Image } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { actions } from '../../store/actions/actionIndex';
+import Loading from '../Loading/Loading';
 import SimiliarMovies from '../SimiliarMovies/SimiliarMovies';
 import { icons } from '../../utils/iconUtils';
 import styles from './movie.module.scss';
@@ -30,6 +31,7 @@ const Movie = () => {
    
    return (
       <>
+        <Loading/>
         <Layout className={styles.movie}>
          <Image preview={false} height={480} src={data.details.backdrop_path?"https://image.tmdb.org/t/p/w500/"+data.details.backdrop_path:icons.posterNot}/>
           <Layout className={styles.movie__sub}>

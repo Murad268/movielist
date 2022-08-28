@@ -26,7 +26,6 @@ const appReducer = (state=initialState, action) => {
          return {...state, loading: false}
       case types.LOAD_SIMILIAR:
          const similiar = action.data;
-         console.log(similiar)
          return {
             ...state,
             similiar: similiar
