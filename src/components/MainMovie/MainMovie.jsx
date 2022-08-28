@@ -1,5 +1,5 @@
 import React from 'react';
-import {Col} from 'antd';
+import {Col, Layout, Image} from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { actions } from '../../store/actions/actionIndex';
@@ -34,8 +34,8 @@ const MainMovie = ({movie}) => {
    return (
       <Col span={5} className={styles.movie}>
         <Link to={`/movie/${movie.id}`} >
-        <div className={styles.movie__controlls}>
-            <div  className="favorite">
+        <Layout.Content className={styles.movie__controlls}>
+            <div className="favorite">
                {data.favorites?.some(film=>film.id===movie.id)?
                <div onClick={removeFav}>💛</div>:
                <div onClick={addFav}>💙</div>}
@@ -45,13 +45,13 @@ const MainMovie = ({movie}) => {
                <div onClick={removeWatch}>👁️</div>:
                <div onClick={addWatch}>👁️‍🗨️</div>}
                </div>
-         </div>
-         <div className={styles.movie__raiting}><img src={icons.star} alt="" /><div>{String(+movie.vote_average?.toFixed(1))}</div></div>
+         </Layout.Content>
+         <Layout.Content className={styles.movie__raiting}><img src={icons.star} alt="" /><div>{String(+movie.vote_average?.toFixed(1))}</div></Layout.Content>
          {
             <img src={movie.poster_path?`https://image.tmdb.org/t/p/w500/${movie.poster_path}`:icons.notFound} alt="" />
          }
          
-         <div className={styles.movie__name}>{movie.title} </div>
+         <Layout.Content  className={styles.movie__name}>{movie.title} </Layout.Content>
          
         </Link>
       </Col>
