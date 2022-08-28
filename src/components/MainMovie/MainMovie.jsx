@@ -1,5 +1,5 @@
 import React from 'react';
-import {Col, Layout, Image} from 'antd';
+import {Col, Layout} from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { actions } from '../../store/actions/actionIndex';
