@@ -13,10 +13,27 @@ const SimiliarMovies = ({id, name}) => {
    useEffect(() => {
       dispatch(actions.loadSimiliars(id))
    }, [id])
-  
-   const list = useSelector(state => {
-      return state.appReducer.similiar.results
+   const data = useSelector(state => {
+      return {
+         list: state.appReducer.similiar.results,
+         favorites: state.favoritesReducer?.favorites,
+         watchers: state.watchReducer?.watchList
+      }
    })
+  
+   const addFav = (movie) => {
+      dispatch(actions.addFavorites(movie))
+   }
+   const removeFav = (movie) => {
+      dispatch(actions.removeFavorites(movie.id))
+   }
+   const addWatch = (movie) => {
+      dispatch(actions.addWatchList(movie))
+   }
+   const removeWatch = (movie) => {
+      dispatch(actions.removeWatchList(movie.id))
+   }
+
    return (
       <>
       <div style={{"paddingTop": "150px"}} className={styles.inner}>
@@ -27,9 +44,21 @@ const SimiliarMovies = ({id, name}) => {
               
             >
                {
-                  list?.map(sim => {
+                  data.list?.map(sim => {
                      return <SwiperSlide key={sim.id}>
                      <div className={styles.carusel}>
+                        <div className={styles.controlls}>
+                        <div className="favorite">
+                           {data.favorites?.some(film=>film.id===sim.id)?
+                           <div onClick={() => removeFav(sim)}>💛</div>:
+                           <div onClick={() => addFav(sim)}>💙</div>}
+                        </div>
+                        <div className="watch">
+                           {data.watchers?.some(film=>film.id===sim.id)?
+                           <div onClick={() => removeWatch(sim)}>👁️</div>:
+                           <div onClick={() => addWatch(sim)}>👁️‍🗨️</div>}
+                           </div>
+                        </div>
                         <Link to={`/movie/${sim.id}`}>
                            <img src={sim.poster_path?`https://image.tmdb.org/t/p/w500/${sim.poster_path}`:icons.notFound} alt="" />
                            <div className={styles.carusel__name}>{sim.title}</div>

@@ -2,6 +2,7 @@
    height: 1000px;
    border-radius: 30px;
    width: 300px !important;
+   position: relative;
 
    img {
       width: 100%;
@@ -21,5 +22,17 @@
       font-size: 30px;
       color: white !important;
       font-weight: 800 !important;
+   }
+}
+
+
+.controlls {
+   position: absolute;
+   top: 0;
+   right: 0;
+   display: flex;
+   font-size: 40px;
+   div {
+      cursor: pointer;
    }
 }
