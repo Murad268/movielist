@@ -10,7 +10,6 @@ const Title = ({category, term, setTerm, setValue}) => {
   const onSubmit = () => {
       dispatch(actions.searchMovie(term, 1))
       setValue(1)
-      navigate(`/${term}`)
   }
    return (
       <>
