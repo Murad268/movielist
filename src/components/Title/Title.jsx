@@ -2,10 +2,11 @@ import React from 'react';
 import { Typography, Col, Row, Input, Space, Form } from 'antd';
 import { useDispatch } from 'react-redux';
 import {actions} from '../../store/actions/actionIndex';
-import { useNavigate } from 'react-router-dom';
 import styles from './title.module.scss'
 const Title = ({category, term, setTerm, setValue}) => {
-   const navigate = useNavigate()
+
+ 
+
   const dispatch = useDispatch();
   const onSubmit = () => {
       dispatch(actions.searchMovie(term, 1))

@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import { Layout, Row, Col, Typography, Image } from 'antd';
-
 import { useDispatch, useSelector } from 'react-redux';
 import { actions } from '../../store/actions/actionIndex';
 
@@ -10,6 +9,7 @@ import styles from './movie.module.scss';
 import 'antd/dist/antd.min.css';
 
 const Movie = () => {
+   
    const {id} = useParams();
    const dispatch = useDispatch();
    useEffect(() => {
