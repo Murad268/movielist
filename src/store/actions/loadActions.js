@@ -82,4 +82,22 @@ export function loadDetails(id) {
 
 
 
+export function loadSimiliars(id) {
+   return async dispatch => {
+      dispatch(loaderOn())
+      try{
+         await axios.get(`https://api.themoviedb.org/3/movie/${id}/similar?api_key=82918892663111fc45ffe32102bc5fe1&language=en-US&page=1`).
+         then((res) => {
+            dispatch({
+               type: types.LOAD_SIMILIAR,
+               data: res.data
+            })  
+            dispatch(loaderOff())
+         })       
+      } catch(e) {
+   
+      }
+      
+   }
+}
 

@@ -20,7 +20,7 @@ const Search = () => {
    }
    useEffect(() => {
       search(term, value)
-   }, [searchQuerry])
+   }, [searchQuerry]) // eslint-disable-line react-hooks/exhaustive-deps
    const movies = useSelector(state => {
       return {
          results: state.appReducer.movies.results,

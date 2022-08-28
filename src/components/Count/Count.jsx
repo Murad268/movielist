@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, Layout } from 'antd';
+import { Typography } from 'antd';
 import styles from './count.module.scss'
 const Count = ({total, title}) => {
    return (

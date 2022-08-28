@@ -1,0 +1,25 @@
+.carusel {
+   height: 1000px;
+   border-radius: 30px;
+   width: 300px !important;
+
+   img {
+      width: 100%;
+      border-radius: 30px;
+      height: 40%;
+   }
+   &__name {
+      font-size: 20px;
+      color: white;
+      text-align: center;
+   }
+}
+
+.inner {
+   padding-left: 110px;
+   &__name {
+      font-size: 30px;
+      color: white !important;
+      font-weight: 800 !important;
+   }
+}

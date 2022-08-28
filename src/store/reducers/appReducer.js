@@ -2,7 +2,8 @@ import { types } from "../types/typeIndex";
 
 const initialState = {
    movies: [],
-   loading: false
+   loading: false,
+   similiar: []
 }
 
 const appReducer = (state=initialState, action) => {
@@ -23,6 +24,13 @@ const appReducer = (state=initialState, action) => {
          return {...state, loading: true}
       case types.LOAD_OFF:
          return {...state, loading: false}
+      case types.LOAD_SIMILIAR:
+         const similiar = action.data;
+         console.log(similiar)
+         return {
+            ...state,
+            similiar: similiar
+         }
       default: 
          return state
    }

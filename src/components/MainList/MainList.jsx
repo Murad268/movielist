@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Row, Pagination} from 'antd';
 import Title from '../Title/Title';
-import MainButton from '../MainMovie/MainMovie';
+import MainMovie from '../MainMovie/MainMovie';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { actions } from '../../store/actions/actionIndex';
@@ -48,7 +48,7 @@ const MainList = () => {
            
             {
                 !!movies.results?.length?movies.results.map(movie => {
-                  return <MainButton key={movie.id} movie={movie}/>
+                  return <MainMovie key={movie.id} movie={movie}/>
                }):<div className={styles.empty}><img src={icons.nothing} alt="" /></div>
             }
          </Row>

@@ -3,18 +3,21 @@ import { useParams } from 'react-router-dom';
 import { Layout, Row, Col, Typography, Image } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { actions } from '../../store/actions/actionIndex';
-
+import SimiliarMovies from '../SimiliarMovies/SimiliarMovies';
 import { icons } from '../../utils/iconUtils';
 import styles from './movie.module.scss';
 import 'antd/dist/antd.min.css';
 
 const Movie = () => {
-   
    const {id} = useParams();
    const dispatch = useDispatch();
+   const toTop = () => {
+      document.documentElement.scrollTop = 0;
+   }
    useEffect(() => {
+      toTop()
       dispatch(actions.loadDetails(id))
-   }, []) // eslint-disable-line react-hooks/exhaustive-deps
+   }, [id]) // eslint-disable-line react-hooks/exhaustive-deps
    const data = useSelector(state => {
       return {
          details: state.detailsReducer.details,
@@ -79,6 +82,7 @@ const Movie = () => {
             }</Layout.Content>
          </Col>
       </Row>
+      <SimiliarMovies id={id} name={data.details.title}/>
       </>
       
    );
