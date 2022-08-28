@@ -5,7 +5,7 @@ import MainButton from '../MainMovie/MainMovie';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { actions } from '../../store/actions/actionIndex';
-
+import Loading from '../Loading/Loading';
 import styles from './mainList.module.scss';
 import nothing from '../../assets/images/nothing.png';
 const MainList = () => {
@@ -41,6 +41,7 @@ const MainList = () => {
          {
             !!movies.results?.length? <Pagination className={styles.pagination} onChange={!!term?.length?(num) =>search(term, num):(value) => filter(category, value)} current={value}  total={movies.totalPage} />:null
          }
+         <Loading/>
          <Row style={{"padding": "38px 0 0 90px"}} gutter={[16, 16]}>
            
             {
