@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {Row, Pagination} from 'antd';
 import Title from '../Title/Title';
 import MainButton from '../MainMovie/MainMovie';
+import Count from '../Count/Count';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { actions } from '../../store/actions/actionIndex';
@@ -23,7 +24,8 @@ const Search = () => {
    const movies = useSelector(state => {
       return {
          results: state.appReducer.movies.results,
-         totalPage: state.appReducer.movies.total_pages
+         totalPage: state.appReducer.movies.total_pages,
+         total: state.appReducer.movies.total_results
       }
    })
    return (
@@ -33,6 +35,7 @@ const Search = () => {
            <Pagination className={styles.pagination} onChange={(num) =>search(term, num)} current={value}  total={movies.totalPage} />
          }
          <Loading/>
+         <Count title={searchQuerry} total={movies.total}/>
          <Row style={{"padding": "38px 0 0 90px"}} gutter={[16, 16]}>
            
             {

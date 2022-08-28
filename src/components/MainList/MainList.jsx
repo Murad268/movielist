@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { actions } from '../../store/actions/actionIndex';
 import Loading from '../Loading/Loading';
+import Count from '../Count/Count';
 import styles from './mainList.module.scss';
 import { icons } from '../../utils/iconUtils';
 const MainList = () => {
@@ -30,18 +31,19 @@ const MainList = () => {
    const movies = useSelector(state => {
       return {
          results: state.appReducer.movies.results,
-         totalPage: state.appReducer.movies.total_pages
+         totalPage: state.appReducer.movies.total_pages,
+         total: state.appReducer.movies.total_results
       }
    })
 
    return (
       <>
-      
          <Title setValue={setValue} setTerm={setTerm} term={term} category={category}/>
          {
             !!movies.results?.length? <Pagination className={styles.pagination} onChange={!!term?.length?(num) =>search(term, num):(value) => filter(category, value)} current={value}  total={movies.totalPage} />:null
          }
          <Loading/>
+         <Count title={category} total={movies.total} level={4}/>
          <Row style={{"padding": "38px 0 0 90px"}} gutter={[16, 16]}>
            
             {
