@@ -10,10 +10,9 @@ const Loading = () => {
                height="180"
                width="180"
                radius="9"
-               color="green"
+               color="yellow"
                ariaLabel="three-dots-loading"
                wrapperStyle
-               wrapperClass
                visible={spinner}
          />
       </div>
