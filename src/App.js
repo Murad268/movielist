@@ -5,6 +5,7 @@ import MainPage from './containers/MainPage';
 import FavoritesAndWatchList from './containers/FavoritesAndWatchList';
 import MoviePage from './containers/MoviePage';
 import NotFoundPage from './containers/NotFoundPage';
+import SearchPage from './containers/SearchPage';
 import {ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path={'/favorites'} element={<FavoritesAndWatchList/>}/>
         <Route path={'/watch_list'} element={<FavoritesAndWatchList/>}/>
         <Route path={'/movie/:id'} element={<MoviePage/>}/>
+        <Route path={'/search/:searchQuerry'} element={<SearchPage/>}/>
         <Route path='*' element={<NotFoundPage/>}/>
       </Routes>
     </Suspense>

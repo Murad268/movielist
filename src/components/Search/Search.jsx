@@ -6,40 +6,29 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { actions } from '../../store/actions/actionIndex';
 import Loading from '../Loading/Loading';
-import styles from './mainList.module.scss';
+import styles from './search.module.scss';
 import { icons } from '../../utils/iconUtils';
-const MainList = () => {
-   const {category} = useParams();
-   const dispatch = useDispatch();
+const Search = () => {
+   const {searchQuerry} = useParams();
    const [value, setValue] = useState(1)
    const [term, setTerm] = useState()
-   const filter = (cat, page) => {
-      dispatch(actions.moviesLoad(cat, page));
-      setValue(page)
-   }
+   const dispatch = useDispatch();
    const search = (term, page) => {
-      dispatch(actions.searchMovie(term, page))
+      dispatch(actions.searchMovie(searchQuerry, page))
       setValue(page)
    }
-   useEffect(() => {
-      filter(category, value)
-      setValue(1)
-      setTerm("")
-   }, [category]) // eslint-disable-line react-hooks/exhaustive-deps
-  
+   
    const movies = useSelector(state => {
       return {
          results: state.appReducer.movies.results,
          totalPage: state.appReducer.movies.total_pages
       }
    })
-
    return (
       <>
-      
-         <Title setValue={setValue} setTerm={setTerm} term={term} category={category}/>
+         <Title setValue={setValue} setTerm={setTerm} term={term} category={searchQuerry}/>
          {
-            !!movies.results?.length? <Pagination className={styles.pagination} onChange={!!term?.length?(num) =>search(term, num):(value) => filter(category, value)} current={value}  total={movies.totalPage} />:null
+           <Pagination className={styles.pagination} onChange={(num) =>search(term, num)} current={value}  total={movies.totalPage} />
          }
          <Loading/>
          <Row style={{"padding": "38px 0 0 90px"}} gutter={[16, 16]}>
@@ -54,4 +43,4 @@ const MainList = () => {
    );
 };
 
-export default MainList;
+export default Search;
