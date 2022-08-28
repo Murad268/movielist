@@ -1,6 +1,6 @@
 import { types } from "../types/typeIndex"
 import { actions } from "./actionIndex"
-export function addFavorite(data) {
+export function addFavorites(data) {
    actions.addFavoriteVery()
    return {
       type: types.ADD_FAVORITES,

@@ -4,14 +4,6 @@ export const menu = (
    <Menu
      items={[
        {
-         key: '1',
-         label: (
-           <Link to="/latest" rel="noopener noreferrer" >
-             Latest
-           </Link>
-         ),
-       },
-       {
          key: '2',
          label: (
            <Link to="/now_playing" rel="noopener noreferrer" href="https://www.aliyun.com">
@@ -42,7 +34,15 @@ export const menu = (
              Upcoming
            </Link>
          ),
-       }
+       },
+       {
+        key: '1',
+        label: (
+          <Link to="/latest" rel="noopener noreferrer" >
+            Latest
+          </Link>
+        ),
+      }
      ]}
    />
  );

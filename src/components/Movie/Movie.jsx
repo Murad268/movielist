@@ -40,7 +40,7 @@ const Movie = () => {
                <Row className={styles.movie__controlls}>
                   {
                      hasInFavorites?
-                     <Col onClick={() => dispatch(actions.addFavorite(data.details))} className={styles.movie__addFav}>
+                     <Col onClick={() => dispatch(actions.addFavorites(data.details))} className={styles.movie__addFav}>
                         add favorite
                      </Col>
                      :

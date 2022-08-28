@@ -17,7 +17,7 @@ const MainMovie = ({movie}) => {
 
    const addFav = (e) => {
       e.preventDefault();
-      dispatch(actions.addFavorite(movie))
+      dispatch(actions.addFavorites(movie))
    }
    const removeFav = (e) => {
       e.preventDefault();

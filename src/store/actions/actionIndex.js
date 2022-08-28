@@ -1,5 +1,5 @@
 import {toast} from 'react-toastify'
-import { addFavorite, removeFavorites } from './favpritesActions';
+import { addFavorites, removeFavorites } from './favoritesActions';
 import { moviesLoad, searchMovie, loadDetails } from './loadActions';
 import { addWatchList, removeWatchList } from './watchListActions';
 
@@ -11,7 +11,7 @@ const deleteFromWatchListVery = () => toast("movie removed from watchlist");
 
 
 export const actions = {
-   addFavorite,
+   addFavorites,
    removeFavorites,
    addWatchList,
    removeWatchList,
