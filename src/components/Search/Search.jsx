@@ -17,7 +17,9 @@ const Search = () => {
       dispatch(actions.searchMovie(searchQuerry, page))
       setValue(page)
    }
-   
+   useEffect(() => {
+      search(term, value)
+   }, [searchQuerry])
    const movies = useSelector(state => {
       return {
          results: state.appReducer.movies.results,
