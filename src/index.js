@@ -8,7 +8,7 @@ import './reset.css';
 import App from './App';
 const store = createStore(rootReducer, compose(
   applyMiddleware(
-    thunk,
+    thunk
   )
 ))
 
