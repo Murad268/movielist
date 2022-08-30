@@ -38,8 +38,8 @@ const Header = () => {
                      <NavLink className={({ isActive }) => (isActive ? styles.header__navLink : "link")} to="/latest" rel="noopener noreferrer">
                         Latest
                      </NavLink>
-                     <NavLink style={{"position": "relative"}} className={({ isActive }) => (isActive ? styles.header__navLink : "link")} to="/favorites" key="3"><i className="fa-regular fa-heart" style={{"fontSize": "20px"}}></i>{movies.favorites?<sup className={styles.header__noty}>{movies.favorites.length}</sup>:null}</NavLink>,
-                     <NavLink style={{"position": "relative"}} className={({ isActive }) => (isActive ? styles.header__navLink : "link")} to="/watch_list" key="2"><i style={{"fontSize": "20px"}} className="fa-regular fa-bookmark"></i>{movies.watch_list?<sup className={styles.header__noty}>{movies.watch_list.length}</sup>:null}</NavLink>,
+                     <NavLink style={{"position": "relative"}} className={({ isActive }) => (isActive ? styles.header__navLink : "link")} to="/favorites" key="3"><i className="fa-regular fa-heart" style={{"fontSize": "20px"}}></i>{movies.favorites.length>0?<sup className={styles.header__noty}>{movies.favorites.length}</sup>:null}</NavLink>,
+                     <NavLink style={{"position": "relative"}} className={({ isActive }) => (isActive ? styles.header__navLink : "link")} to="/watch_list" key="2"><i style={{"fontSize": "20px"}} className="fa-regular fa-bookmark"></i>{movies.watch_list.length>0?<sup className={styles.header__noty}>{movies.watch_list.length}</sup>:null}</NavLink>,
                   </div>
                </div>
             </div>

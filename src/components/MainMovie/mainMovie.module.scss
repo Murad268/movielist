@@ -51,7 +51,7 @@
       position: absolute;
       top: 14px;
       left: 18px;
-      padding: 5px;
+      padding: 4px 8px;
       z-index: 10;
       font-family: 'Poppins';
       font-style: normal;
@@ -61,6 +61,8 @@
       color: #FFAD49;
       i {
          font-size: 14px;
+         margin-right: 5px;
+         margin-bottom: 3px;
       }
    }
 }
