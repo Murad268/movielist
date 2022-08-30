@@ -17,7 +17,7 @@ const FavAndWatch = () => {
    })
    const moviesList = pathname === "/favorites"?movies.favorites:pathname === "/watch_list"?movies.watch_list:null
    return (
-      <Layout.Content className="container">
+      <Layout.Content className={styles.layout}>
          <Typography.Title className={styles.title}>my {pathname.slice(1).replace("_", " ")} movies</Typography.Title>
          <Row className={styles.mainList}
             gutter={{

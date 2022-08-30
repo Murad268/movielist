@@ -17,7 +17,7 @@ const Header = () => {
   
    return (
          <PageHeader className={styles.header} ghost={false}>
-            <div className="container">
+            <div className={styles.header__layout}>
                <div className={styles.header__wrapper}>
                   <div className={styles.header__logo}>
                      <NavLink to="/"><img src={icons.logo} alt="" /></NavLink>

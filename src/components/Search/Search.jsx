@@ -29,7 +29,7 @@ const Search = () => {
       }
    })
    return (
-       <Layout.Content className="container">
+       <Layout.Content className={styles.layout}>
           <Title setValue={setValue} setTerm={setTerm} term={term} category={searchQuerry}/>
           {
            <Pagination className={styles.pagination} onChange={(num) =>search(term, num)} current={value}  total={movies.totalPage} />

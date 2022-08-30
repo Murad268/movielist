@@ -1,6 +1,10 @@
 .header {
    background: #151931;
    backdrop-filter: blur(40px);
+   &__layout {
+      width: 1145px;
+      margin: 0 auto;
+   }
    &__wrapper {
       display: flex;
       justify-content: space-between;

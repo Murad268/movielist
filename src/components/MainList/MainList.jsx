@@ -37,7 +37,7 @@ const MainList = () => {
    })
 
    return (
-      <Layout.Content className="container">
+      <Layout.Content className={styles.layout}>
          <Title setValue={setValue} setTerm={setTerm} term={term} category={category}/>
          {
             !!movies.results?.length? <Pagination className={styles.mainList__pagination} onChange={!!term?.length?(num) =>search(term, num):(value) => filter(category, value)} current={value}  total={movies.totalPage} />:null

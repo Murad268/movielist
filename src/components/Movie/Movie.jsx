@@ -34,7 +34,7 @@ const Movie = () => {
 
    return (
       <Layout className={styles.col}>
-         <div className="container">
+         <div className={styles.layout}>
             <Loading/>
             <Row className={styles.header}>
                <Col span={24}>
