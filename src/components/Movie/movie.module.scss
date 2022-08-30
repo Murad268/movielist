@@ -128,14 +128,15 @@
       font-size: 16px !important;
       line-height: 32px !important;
       color: #8E95A9 !important;
-      width: 420px;
+      width: 435px;
+      text-align: justify;
    }
    &__genres {
       display: flex;
-      width: 440px;
+      width: 330px;
       flex-wrap: wrap;
       main {
-         margin-right: 10px;
+         margin-right: 5px;
       }
    }
 }
