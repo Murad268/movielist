@@ -1,3 +1,5 @@
+
+
 .mainList {
    padding: 30px 0;
    row-gap: 20px;
@@ -26,3 +28,13 @@
       }
    }
 }
+
+@media(max-width: 1400px) {
+   .main {
+      width: 1400px !important;
+      margin: 0 auto;
+   }
+}
+
+
+

@@ -44,7 +44,7 @@ const MainList = () => {
          }
          <Loading/>
          <Count title={category} total={movies.total} level={4}/>
-            <Row  className={styles.mainList}
+            <Row className={styles.mainList}
                gutter={{
                xs: 8,
                sm: 16,

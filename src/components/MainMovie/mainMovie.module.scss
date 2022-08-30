@@ -8,7 +8,7 @@
    width: 266px !important;
    &:hover{ 
       box-shadow: 1px 8px 20px grey;
-     -webkit-transition:  box-shadow .6s ease-in;
+     -webkit-transition:  box-shadow .3s ease-in;
    }
    img {
       border-radius: 8px
@@ -28,7 +28,7 @@
    &__addWatchList {
       position: absolute;
       right: 15px;
-      bottom: 30px;
+      bottom: 25px;
       font-size: 18px;
    }
    &__addFavorites {
