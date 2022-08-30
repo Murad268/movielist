@@ -1,29 +1,16 @@
-.movie {
-   height: 480px;
-   width: 80%;
-   margin: 0 auto;
-   border-radius: 40px;
-   margin-top: 40px;
+.header {
+   height: 480px !important;
+   background: linear-gradient(180deg, rgba(54, 44, 146, 0.4) 0%, rgba(18, 98, 151, 0.4) 100%) !important;
+   border-radius: 40px !important;
    position: relative;
-   .ant-image-mask {
-      border-radius: 24px !important
-   }
-   &__title {
-      font-family: 'Poppins' !important;
-      font-style: normal !important;
-      font-weight: 600 !important;
-      font-size: 32px !important;
-      line-height: 40px !important;
-      letter-spacing: -0.02em !important;
-      color: #EBEEF5 !important;
-   }
    img {
-      width: 100%;
-      height: 100% !important;
-      object-fit: fill;
+      width: 100% !important;
+      height: 480px !important;
+      overflow: hidden !important;
+      object-fit: cover !important;
       border-radius: 40px !important;
    }
-   &__sub {
+   &__footer {
       width: 560px;
       height: 144px;
       background: rgba(32, 40, 62, 0.8);
@@ -36,76 +23,112 @@
       display: flex;
       padding-top: 55px;
       align-items: center;
-   }
-   &__wrapper {
-      width: 80%;
-      margin: 152px auto 0 auto;
-      align-items: center
-   }
-   &__poster { 
-      height: 690px;
-      &__title {
-         font-family: 'Poppins' !important;
-         font-style: normal !important;
-         font-weight: 700 !important;
-         font-size: 24px !important;
-         line-height: 32px !important;
-         letter-spacing: -0.015em !important;
-         color: #EBEEF5 !important;
-         margin-bottom: 24px !important;
-      }
-      &__subtitle {
-         font-family: 'Poppins' !important;
-         font-style: normal !important;
-         font-weight: 400 !important;
-         font-size: 16px !important; 
-         line-height: 24px !important;
-         color: #767E94 !important;
-         margin-bottom: 8px !important;
-         margin-top: 24px !important;
-      }
-      &__content {
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items:flex-start;
+      justify-content: space-between;
+      &__top {
          font-family: 'Poppins';
          font-style: normal;
          font-weight: 400;
-         font-size: 20px;
-         line-height: 32px;
-         color: #C3C8D4;
+         font-size: 12px;
+         line-height: 16px;
+         display: flex;
+         align-items: center;
+         color: #BEB7FB;
       }
-      &__desc {
-         font-family: 'Poppins' !important;
-         font-style: normal !important;
-         font-weight: 400 !important;
-         font-size: 18px !important;
-         line-height: 32px !important;
-         color: #8E95A9 !important;
-         text-align: justify;
-      }
-      img {
-         width: 100%;
-         height: 100%;
-         object-fit: fill;
-         border-radius: 24px;
+      &__bottom {
+         font-family: 'Poppins';
+         font-style: normal;
+         font-weight: 600;
+         font-size: 32px;
+         line-height: 40px; 
+         display: flex;
+         align-items: center;
+         letter-spacing: -0.02em;
+         color: #EBEEF5;
       }
    }
-   &__raiting {
-      padding: 4px 8px;
+}
+
+.col {
+   padding: 40px 0 0 0;
+   background: transparent;
+}
+
+.movie__poster {
+   margin-top: 152px;
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   border-radius: 24px;
+   column-gap: 80px;
+   padding: 0 80px;
+   &__about {
       margin-top: 28px;
-      width: max-content;
-      height: 32px;
+      display: flex;
+      width: 250px;
+      justify-content: space-between;
+      &__raiting {
+         font-family: 'Poppins';
+         font-style: normal;
+         font-weight: 400;
+         font-size: 16px;
+         line-height: 24px;
+         color: #FFAD49;
+      }
+      &__fav, &__watch {
+         cursor: pointer;
+      }
+     div {
       background: rgba(0, 0, 0, 0.65);
       backdrop-filter: blur(8px);
       border-radius: 8px;
-      display: flex;
+      width: max-content;
+      padding: 4px 8px;
+     }
+   }
+   img {
+      width: 480px;
+      height: 720px;
+      border-radius: 24px;
+   }
+   &__title {
+      font-family: 'Poppins' !important;
+      font-style: normal !important;
+      font-weight: 700 !important;
+      font-size: 24px !important;
+      line-height: 32px !important;
+      letter-spacing: -0.015em !important;
+      color: #EBEEF5 !important;
+      margin-bottom: 24px !important;
+   }
+   &__subtitle {
+      font-family: 'Poppins' !important;
+      font-style: normal !important;
+      font-weight: 400 !important;
+      font-size: 16px !important; 
+      line-height: 24px !important;
+      color: #767E94 !important;
+      margin-bottom: 8px !important;
+      margin-top: 24px !important;
+   }
+   &__content {
       font-family: 'Poppins';
       font-style: normal;
       font-weight: 400;
-      font-size: 16px;
-      line-height: 24px;
-      color: #FFAD49;
-     img {
-      margin-bottom: 3px;
-     }
+      font-size: 20px;
+      line-height: 32px;
+      color: #C3C8D4;
+   }
+   &__desc {
+      font-family: 'Poppins' !important;
+      font-style: normal !important;
+      font-weight: 400 !important;
+      font-size: 18px !important;
+      line-height: 32px !important;
+      color: #8E95A9 !important;
+      width: 480px;
    }
    &__genres {
       width:max-content;
@@ -114,51 +137,4 @@
          margin-right: 10px;
       }
    }
-
-
-   &__addWatch, &__removeWatch, &__addFav, &__removeFav {
-      margin: 10px;
-      padding: 10px 10px;
-      text-align: center;
-      text-transform: uppercase;
-      transition: 0.5s;
-      background-size: 200% auto;
-      color: white;
-      border-radius: 10px;
-      display: block;
-      border: 0px;
-      font-weight: 700;
-      font-size: 12px;
-      box-shadow: 0px 0px 14px -7px #f09819;
-      background-image: linear-gradient(45deg, #FF512F 0%, #F09819  51%, #FF512F  100%);
-      cursor: pointer;
-      user-select: none;
-      -webkit-user-select: none;
-      touch-action: manipulation;
-      &:hover {
-         background-position: right center;
-         color: #fff;
-         text-decoration: none;
-      }
-      &:active {
-         transform: scale(0.95);
-      }
-   }
-
-   &__addFav {
-      background:rgba(0, 0, 0, 0.65)
-   }
-   &__addWatch {
-      background: gray
-   }
-   &__removeWatch {
-      background: green
-   }
 }
-
-
-
-
-
-
-

@@ -7,13 +7,13 @@ const Loading = () => {
    return (
       <div className={styles.loader}>
          <Audio
-               height="180"
-               width="180"
-               radius="9"
-               color="yellow"
-               ariaLabel="three-dots-loading"
-               wrapperStyle
-               visible={spinner}
+            height="180"
+            width="180"
+            radius="9"
+            color="yellow"
+            ariaLabel="three-dots-loading"
+            wrapperStyle
+            visible={spinner}
          />
       </div>
    );

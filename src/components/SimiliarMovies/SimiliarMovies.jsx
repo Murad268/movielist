@@ -1,71 +1,34 @@
 import React, {useEffect} from 'react';
 import styles from './similiar.module.scss'
 import { actions } from '../../store/actions/actionIndex';
-import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Typography } from 'antd';
-import { icons } from '../../utils/iconUtils';
+import MainMovie from '../MainMovie/MainMovie';
 import 'swiper/css';
 const SimiliarMovies = ({id, name}) => {
    const dispatch = useDispatch()
    
    useEffect(() => {
       dispatch(actions.loadSimiliars(id))
-   }, [id])
+   }, [id]) // eslint-disable-line react-hooks/exhaustive-deps
    const data = useSelector(state => {
-      return {
-         list: state.appReducer.similiar.results,
-         favorites: state.favoritesReducer?.favorites,
-         watchers: state.watchReducer?.watchList
-      }
+      return  state.appReducer.similiar.results
+       
+     
    })
-  
-   const addFav = (movie) => {
-      dispatch(actions.addFavorites(movie))
-   }
-   const removeFav = (movie) => {
-      dispatch(actions.removeFavorites(movie.id))
-   }
-   const addWatch = (movie) => {
-      dispatch(actions.addWatchList(movie))
-   }
-   const removeWatch = (movie) => {
-      dispatch(actions.removeWatchList(movie.id))
-   }
+
 
    return (
       <>
-      <div style={{"paddingTop": "150px"}} className={styles.inner}>
-         <Typography.Title className={styles.inner__name}>people who watched the movie {name} are also watching</Typography.Title>
-         <Swiper
-               spaceBetween={5}
-               slidesPerView={3}
-              
-            >
+      <div style={{"paddingTop": "150px"}} >
+         <Typography.Title style={{"textAlign": "center"}} className={styles.inner__name}>Recommended Movies</Typography.Title>
+         <Swiper spaceBetween={5} slidesPerView={4}>
                {
-                  data.list?.map(sim => {
+                  data?.map(sim => {
                      return <SwiperSlide key={sim.id}>
-                     <div className={styles.carusel}>
-                        <div className={styles.controlls}>
-                        <div className="favorite">
-                           {data.favorites?.some(film=>film.id===sim.id)?
-                           <div onClick={() => removeFav(sim)}>💛</div>:
-                           <div onClick={() => addFav(sim)}>💙</div>}
-                        </div>
-                        <div className="watch">
-                           {data.watchers?.some(film=>film.id===sim.id)?
-                           <div onClick={() => removeWatch(sim)}>👁️</div>:
-                           <div onClick={() => addWatch(sim)}>👁️‍🗨️</div>}
-                           </div>
-                        </div>
-                        <Link to={`/movie/${sim.id}`}>
-                           <img src={sim.poster_path?`https://image.tmdb.org/t/p/w500/${sim.poster_path}`:icons.notFound} alt="" />
-                           <div className={styles.carusel__name}>{sim.title}</div>
-                        </Link>
-                  
-                     </div>
-                  </SwiperSlide>
+                        <MainMovie movie={sim}/>
+                     </SwiperSlide>
                   })
                }
             </Swiper>

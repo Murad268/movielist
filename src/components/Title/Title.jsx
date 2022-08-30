@@ -17,7 +17,7 @@ const Title = ({category, term, setTerm, setValue}) => {
    return (
       <>
          <Row>
-            <Col span={7} offset={2}>
+            <Col >
                <Typography.Title className={styles.title}>MovieDB</Typography.Title>
                <Typography.Title className={styles.subtitle} level={5}>the {category.replace("_", " ")} movies</Typography.Title>
                <Space className={styles.main} direction="vertical">

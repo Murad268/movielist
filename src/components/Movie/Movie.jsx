@@ -1,23 +1,25 @@
 import React, {useEffect} from 'react';
 import { useParams } from 'react-router-dom';
-import { Layout, Row, Col, Typography, Image } from 'antd';
+import { Layout, Row, Col, Typography } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { actions } from '../../store/actions/actionIndex';
+import { icons } from '../../utils/iconUtils';
 import Loading from '../Loading/Loading';
 import SimiliarMovies from '../SimiliarMovies/SimiliarMovies';
-import { icons } from '../../utils/iconUtils';
 import styles from './movie.module.scss';
 import 'antd/dist/antd.min.css';
 
 const Movie = () => {
+ 
    const {id} = useParams();
    const dispatch = useDispatch();
    const toTop = () => {
       document.documentElement.scrollTop = 0;
    }
+
    useEffect(() => {
       toTop()
-      dispatch(actions.loadDetails(id))
+      dispatch(actions.loadDetails(parseInt(id.match(/\d+/))))
    }, [id]) // eslint-disable-line react-hooks/exhaustive-deps
    const data = useSelector(state => {
       return {
@@ -29,63 +31,66 @@ const Movie = () => {
    const hasInFavorites = !data.favorites.some(list => list.id === data.details.id)
    const hasInWatchList = !data.watch_list.some(list => list.id === data.details.id)
    
+
    return (
-      <>
-        <Loading/>
-        <Layout className={styles.movie}>
-         <Image preview={false} height={480} src={data.details.backdrop_path?"https://image.tmdb.org/t/p/w500/"+data.details.backdrop_path:icons.posterNot}/>
-          <Layout className={styles.movie__sub}>
-            <Typography.Title className={styles.movie__title}>{data.details.title}</Typography.Title>
-          </Layout>
-       </Layout>
-       <Row className={styles.movie__wrapper}>
-         <Col className={styles.movie__poster} span={10}>
-            <Image preview={false}  width={480} height={720} src={data.details.poster_path?"https://image.tmdb.org/t/p/w500/"+data.details.poster_path:icons.notFound}/>
-          
-               <Row className={styles.movie__controlls}>
+      <Layout className={styles.col}>
+         <div className="container">
+            <Loading/>
+            <Row className={styles.header}>
+               <Col span={24}>
+                  <img src={data.details.backdrop_path?"https://image.tmdb.org/t/p/w500/"+data.details.backdrop_path:icons.posterNot} alt="backdrop_path"/>
+               </Col>
+               <Layout.Content className={styles.header__footer}>
+                  <div className={styles.header__footer__top}>
+                     {id.replace(/[0-9]/g, '')} movies / {data.details?.title}
+                  </div>
+                  <div className={styles.header__footer__bottom}>
+                     {data.details?.title}
+                  </div>
+               </Layout.Content>
+            </Row>
+            <Row className={styles.movie__poster}>
+               <Col>
+                  <img src={data.details.poster_path?"https://image.tmdb.org/t/p/w500/"+data.details.poster_path:icons.notFound} alt="" />
+               </Col>
+               <Col>
+               <Typography.Title className={styles.movie__poster__title}>{data.details.title}</Typography.Title>
+               <Layout.Content className={styles.movie__poster__desc}>{data.details.overview}</Layout.Content>
+               <Layout.Content className={styles.movie__poster__about}>
+                  <div className={styles.movie__poster__about__raiting}><i style={{"marginRight":"5px"}} className="fa-regular fa-star"></i>{String(+data.details.vote_average)} ({data.details?.vote_count} vote)</div>
                   {
                      hasInFavorites?
-                     <Col onClick={() => dispatch(actions.addFavorites(data.details))} className={styles.movie__addFav}>
-                        add favorite
-                     </Col>
+                     <div onClick={() => dispatch(actions.addFavorites(data.details))} className={styles.movie__poster__about__fav}><i className="fa-regular fa-heart" style={{"color": "orange"}}></i></div>
                      :
-                     <Col onClick={() => dispatch(actions.removeFavorites(data.details.id))} className={styles.movie__removeFav}>
-                        remove from Favorite
-                     </Col>
+                     <div onClick={() => dispatch(actions.removeFavorites(data.details.id))} className={styles.movie__poster__about__fav}><i className="fa fa-heart" style={{"color": "orange"}}></i></div>
+                    
                   }  
                    {
                      hasInWatchList?
-                     <Col onClick={() => dispatch(actions.addWatchList(data.details))} className={styles.movie__addWatch}>
-                        add watch list
-                     </Col>
+                     <div onClick={() => dispatch(actions.addWatchList(data.details))}  className={styles.movie__poster__about__watch}><i style={{"color": "orange"}} className="fa-regular fa-bookmark"></i></div>
                      :
-                     <Col onClick={() => dispatch(actions.removeWatchList(data.details.id))} className={styles.movie__removeWatch}>
-                        remove from watch list
-                     </Col>
+                     <div onClick={() => dispatch(actions.removeWatchList(data.details.id))} className={styles.movie__poster__about__watch}><i style={{"color": "orange"}} className="fa fa-bookmark"></i></div>
                   }  
-               </Row>
-           
-         </Col>
-         <Col offset={3} span={10}>
-            <Typography.Title className={styles.movie__poster__title}>{data.details.title}</Typography.Title>
-            <Layout.Content className={styles.movie__poster__desc}>{data.details.overview}</Layout.Content>
-            <Layout.Content className={styles.movie__raiting}><Image preview={false}  width={14} height={14} src={icons.star}/><Layout.Content style={{"marginLeft": "10px"}}>{String(+data.details.vote_average?.toFixed(1))}</Layout.Content></Layout.Content>
-            <Typography.Title level={4} className={styles.movie__poster__subtitle}>type</Typography.Title>
-            <Layout.Content className={styles.movie__poster__content}>{data.details.budget?"movie":"tw-show"}</Layout.Content>
-            <Typography.Title className={styles.movie__poster__subtitle}>Release Date:</Typography.Title>
-            <Layout.Content className={styles.movie__poster__content}>{data.details.release_date}</Layout.Content>
-            <Typography.Title className={styles.movie__poster__subtitle}>Run time</Typography.Title>
-            <Layout.Content className={styles.movie__poster__content}>{data.details.runtime} min</Layout.Content>
-            <Typography.Title className={styles.movie__poster__subtitle}>Genres</Typography.Title>
-            <Layout.Content className={styles.movie__genres}> {
-               data.details.genres?.map((genre, i) => {
-                  return <Layout.Content key={genre.id} className={styles.movie__poster__content}>{genre.name}{i !== 2?",":null}</Layout.Content>
-               })
-            }</Layout.Content>
-         </Col>
-      </Row>
-      <SimiliarMovies id={id} name={data.details.title}/>
-      </>
+               </Layout.Content>
+               <Typography.Title level={4} className={styles.movie__poster__subtitle}>type</Typography.Title>
+               <Layout.Content className={styles.movie__poster__content}>{data.details.budget?"movie":"tw-show"}</Layout.Content>
+               <Typography.Title className={styles.movie__poster__subtitle}>Release Date:</Typography.Title>
+               <Layout.Content className={styles.movie__poster__content}>{data.details.release_date}</Layout.Content>
+               <Typography.Title className={styles.movie__poster__subtitle}>Run time</Typography.Title>
+               <Layout.Content className={styles.movie__poster__content}>{data.details.runtime} min</Layout.Content>
+               <Typography.Title className={styles.movie__poster__subtitle}>Genres</Typography.Title>
+               <Layout.Content className={styles.movie__poster__genres}> 
+                  {
+                     data.details.genres?.map((genre, i) => {
+                        return <Layout.Content key={genre.id} className={styles.movie__poster__content}>{genre.name}{i !== 2?",":null}</Layout.Content>
+                     })
+                  }
+               </Layout.Content>
+               </Col>
+            </Row>
+            <SimiliarMovies id={parseInt(id.match(/\d+/))} name={data.details.title}/>
+         </div>
+      </Layout>
       
    );
 };

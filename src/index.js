@@ -8,9 +8,8 @@ import './reset.css';
 import App from './App';
 const store = createStore(rootReducer, compose(
   applyMiddleware(
-    thunk,
-  ),
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    thunk
+  )
 ))
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

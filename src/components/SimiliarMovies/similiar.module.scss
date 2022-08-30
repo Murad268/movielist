@@ -1,38 +1,5 @@
-.carusel {
-   height: 1000px;
-   border-radius: 30px;
-   width: 300px !important;
-   position: relative;
-
-   img {
-      width: 100%;
-      border-radius: 30px;
-      height: 40%;
-   }
-   &__name {
-      font-size: 20px;
-      color: white;
-      text-align: center;
-   }
-}
-
-.inner {
-   padding-left: 110px;
-   &__name {
-      font-size: 30px;
-      color: white !important;
-      font-weight: 800 !important;
-   }
-}
-
-
-.controlls {
-   position: absolute;
-   top: 0;
-   right: 0;
-   display: flex;
-   font-size: 40px;
-   div {
-      cursor: pointer;
-   }
+.inner__name {
+   font-size: 30px;
+   color: white !important;
+   font-weight: 800 !important;
 }

@@ -1,22 +1,19 @@
-.movie {
-   position: relative;
-   height: 420px;
-   margin-left: 20px;
+.card {
+   padding: 8px 8px 26px 8px;
    background: rgba(32, 40, 62, 0.8);
    backdrop-filter: blur(80px);
    border-radius: 12px;
-   display: flex;
-   flex-direction: column;
-   justify-content: flex-end;
-   padding: 0 0 20px 16px;
-   &__next {
-      width: 30px !important;
-      height: 30px !important;
-      object-fit: fill !important;
-      z-index: 100;
-     
+   border: none;
+   position: relative;
+   width: 266px !important;
+   &:hover{ 
+      box-shadow: 1px 8px 20px grey;
+     -webkit-transition:  box-shadow .6s ease-in;
    }
-   &__name {
+   img {
+      border-radius: 8px
+   }
+   &__title {
       font-family: 'Poppins';
       font-style: normal;
       font-weight: 600;
@@ -24,26 +21,37 @@
       line-height: 24px;
       letter-spacing: 0.02em;
       color: #EBEEF5;
-      position: relative;
-   }
-   img {
-      width: 266px;
       position: absolute;
-      top: 8px;
-      left: 6px;
-      width: 95%;
-      height: 340px;
-      border-radius: 8px;
+      bottom: 32px;
+      left: 16px;
    }
-   &__raiting {
+   &__addWatchList {
       position: absolute;
-      top: 18px;
-      left: 18px;
+      right: 10px;
+      bottom: 30px;
+      font-size: 18px;
+   }
+   &__addFavorites {
       background: rgba(0, 0, 0, 0.65);
       backdrop-filter: blur(8px);
       border-radius: 8px;
       width: max-content;
-      height: 40px;
+      font-size: 18px;
+      position: absolute;
+      top: 14px;
+      right: 18px;
+      padding: 0 5px;
+   }
+   &__raiting {
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(8px);
+      border-radius: 8px;
+      width: max-content;
+      font-size: 18px;
+      position: absolute;
+      top: 14px;
+      left: 18px;
+      padding: 5px;
       z-index: 10;
       font-family: 'Poppins';
       font-style: normal;
@@ -51,37 +59,8 @@
       font-size: 16px;
       line-height: 24px;
       color: #FFAD49;
-      padding: 8px 8px 8px 10px;
-      img {
-         width: 14px;
-         height: 14px;
-         margin: 4px 20px 0 0;
-         z-index: 10;
+      i {
+         font-size: 14px;
       }
-      div {
-         margin-left: 15px;
-      }
-   }
-   &__controlls {
-      position: absolute;
-      border-radius: 10px;
-      top: 65%;
-      left: 65px;
-      box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-      padding: 10px;
-      z-index: 10;
-      background: rgba(0, 0, 0, 0.75);
-      display: flex;
-      opacity: 0;
-      transition: 0.4s;
-      div {
-         margin-right: 10px;
-         cursor: pointer;
-         font-size: 30px;
-         user-select: none;
-      }
-   }
-   &:hover &__controlls {
-         opacity: 1;
    }
 }

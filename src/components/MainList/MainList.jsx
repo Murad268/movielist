@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import {Row, Pagination} from 'antd';
-import Title from '../Title/Title';
-import MainMovie from '../MainMovie/MainMovie';
+import {Row, Pagination, Layout} from 'antd';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { actions } from '../../store/actions/actionIndex';
 import Loading from '../Loading/Loading';
 import Count from '../Count/Count';
+import Title from '../Title/Title';
+import MainMovie from '../MainMovie/MainMovie';
 import styles from './mainList.module.scss';
 import { icons } from '../../utils/iconUtils';
 const MainList = () => {
@@ -37,22 +37,27 @@ const MainList = () => {
    })
 
    return (
-      <>
+      <Layout.Content className="container">
          <Title setValue={setValue} setTerm={setTerm} term={term} category={category}/>
          {
-            !!movies.results?.length? <Pagination className={styles.pagination} onChange={!!term?.length?(num) =>search(term, num):(value) => filter(category, value)} current={value}  total={movies.totalPage} />:null
+            !!movies.results?.length? <Pagination className={styles.mainList__pagination} onChange={!!term?.length?(num) =>search(term, num):(value) => filter(category, value)} current={value}  total={movies.totalPage} />:null
          }
          <Loading/>
          <Count title={category} total={movies.total} level={4}/>
-         <Row style={{"padding": "38px 0 0 90px"}} gutter={[16, 16]}>
-           
+            <Row  className={styles.mainList}
+               gutter={{
+               xs: 8,
+               sm: 16,
+               md: 24,
+               lg: 32,
+               }}>
             {
                 !!movies.results?.length?movies.results.map(movie => {
                   return <MainMovie key={movie.id} movie={movie}/>
-               }):<div className={styles.empty}><img src={icons.nothing} alt="" /></div>
+               }):<div className={styles.mainList__empty}><img src={icons.nothing} alt="" /></div>
             }
          </Row>
-      </>
+      </Layout.Content>
    );
 };
 
