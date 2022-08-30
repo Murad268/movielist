@@ -30,6 +30,10 @@ const Movie = () => {
    })
    const hasInFavorites = !data.favorites.some(list => list.id === data.details.id)
    const hasInWatchList = !data.watch_list.some(list => list.id === data.details.id)
+   let genres = [];
+   data.details.genres?.forEach(el => {
+      genres.push(el.name)
+   })
    
 
    return (
@@ -81,10 +85,9 @@ const Movie = () => {
                <Typography.Title className={styles.movie__poster__subtitle}>Genres</Typography.Title>
                <Layout.Content className={styles.movie__poster__genres}> 
                   {
-                     data.details.genres?.map((genre, i) => {
-                        return <Layout.Content key={genre.id} className={styles.movie__poster__content}>{genre.name}{i !== 2?",":null}</Layout.Content>
-                     })
+                     <Layout.Content className={styles.movie__poster__content}>{genres.join(", ")}</Layout.Content> 
                   }
+                 
                </Layout.Content>
                </Col>
             </Row>

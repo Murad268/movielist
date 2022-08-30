@@ -53,7 +53,7 @@
 }
 
 .col {
-   padding: 40px 0 0 0;
+   padding: 40px 0 40px 0;
    background: transparent;
 }
 
@@ -67,7 +67,7 @@
    &__about {
       margin-top: 28px;
       display: flex;
-      width: 250px;
+      width: 230px;
       justify-content: space-between;
       &__raiting {
          font-family: 'Poppins';
@@ -79,6 +79,7 @@
       }
       &__fav, &__watch {
          cursor: pointer;
+         font-size: 16px;
       }
      div {
       background: rgba(0, 0, 0, 0.65);
@@ -125,7 +126,7 @@
       font-family: 'Poppins' !important;
       font-style: normal !important;
       font-weight: 400 !important;
-      font-size: 16px !important;
+      font-size: 20px !important;
       line-height: 32px !important;
       color: #8E95A9 !important;
       width: 435px;
@@ -133,9 +134,12 @@
    }
    &__genres {
       display: flex;
-      width: 260px;
+      width: max-content;
       flex-wrap: wrap;
-      
+      max-width: 400px;
+      main {
+         margin-right: 8px;
+      }
    }
 }
 .layout {

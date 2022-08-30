@@ -6,12 +6,15 @@
    border: none;
    position: relative;
    width: 266px;
+   height: 480px;
+   min-height: 480px;
    &:hover{ 
       box-shadow: 1px 8px 20px grey;
      -webkit-transition:  box-shadow .3s ease-in;
    }
    img {
-      border-radius: 8px
+      border-radius: 8px;
+
    }
    &__title {
       font-family: 'Poppins';
