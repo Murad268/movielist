@@ -28,7 +28,8 @@
    }
    &__navLink  {
       border-bottom: 1px solid  #7B6EF6;
-      color: #7B6EF6 !important
+      color: #7B6EF6 !important;
+      padding-bottom: 5px !important;
    }
    &__noty {
       position: absolute;
@@ -47,3 +48,29 @@
    }
 }
 
+
+@media(max-width: 1200px) {
+   .hader {
+      &__layout {
+         width: 992px;
+      }
+   }
+}
+
+
+@media(max-width: 992px) {
+   .hader {
+      &__layout {
+         width: 768px;
+      }
+   }
+}
+
+
+@media(max-width: 768px) {
+   .hader {
+      &__layout {
+         width: 567x;
+      }
+   }
+}

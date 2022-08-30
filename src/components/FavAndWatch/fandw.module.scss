@@ -18,6 +18,26 @@
 }
 
 .layout {
-   width: 1145px;
+   width: 1200px;
    margin: 0 auto;
+}
+
+@media(max-width: 1200px) {
+   .layout {
+      width: 992px;
+   }
+}
+
+
+@media(max-width: 992px) {
+   .layout {
+      width: 768px;
+   }
+}
+
+
+@media(max-width: 768px) {
+   .layout {
+      width: 576px;
+   }
 }
