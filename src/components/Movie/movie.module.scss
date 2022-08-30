@@ -125,14 +125,15 @@
       font-family: 'Poppins' !important;
       font-style: normal !important;
       font-weight: 400 !important;
-      font-size: 18px !important;
+      font-size: 16px !important;
       line-height: 32px !important;
       color: #8E95A9 !important;
-      width: 480px;
+      width: 420px;
    }
    &__genres {
-      width:max-content;
       display: flex;
+      width: 440px;
+      flex-wrap: wrap;
       main {
          margin-right: 10px;
       }

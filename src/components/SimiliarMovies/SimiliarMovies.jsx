@@ -21,18 +21,18 @@ const SimiliarMovies = ({id, name}) => {
 
    return (
       <>
-      <div style={{"paddingTop": "150px"}} >
-         <Typography.Title style={{"textAlign": "center"}} className={styles.inner__name}>Recommended Movies</Typography.Title>
-         <Swiper spaceBetween={5} slidesPerView={4}>
-               {
-                  data?.map(sim => {
-                     return <SwiperSlide key={sim.id}>
-                        <MainMovie movie={sim}/>
-                     </SwiperSlide>
-                  })
-               }
-            </Swiper>
-      </div>   
+         <div style={{"paddingTop": "150px"}} >
+            <Typography.Title style={{"textAlign": "center"}} className={styles.inner__name}>Recommended Movies</Typography.Title>
+            <Swiper spaceBetween={5} slidesPerView={4}>
+                  {
+                     data?.map(sim => {
+                        return <SwiperSlide key={sim.id}>
+                           <MainMovie movie={sim}/>
+                        </SwiperSlide>
+                     })
+                  }
+               </Swiper>
+         </div>   
       </>
    );
 };
