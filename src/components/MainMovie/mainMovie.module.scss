@@ -41,6 +41,9 @@
       top: 14px;
       right: 18px;
       padding: 0 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
    }
    &__raiting {
       background: rgba(0, 0, 0, 0.65);
