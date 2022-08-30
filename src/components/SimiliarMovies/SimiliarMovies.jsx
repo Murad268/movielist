@@ -4,12 +4,10 @@ import { actions } from '../../store/actions/actionIndex';
 import { useDispatch, useSelector } from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Typography } from 'antd';
-import {  useLocation } from 'react-router-dom';
 import SimiliarMovie from '../SimiliarMovie/SimiliarMovie';
 import 'swiper/css';
 const SimiliarMovies = ({id, name}) => {
    const dispatch = useDispatch()
-   const {pathname} = useLocation()
    useEffect(() => {
       dispatch(actions.loadSimiliars(id))
    }, [id]) // eslint-disable-line react-hooks/exhaustive-deps

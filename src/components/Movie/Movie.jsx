@@ -42,7 +42,7 @@ const Movie = () => {
             <Loading/>
             <Row className={styles.header}>
                <Col span={24}>
-                  <img src={data.details.backdrop_path?"https://image.tmdb.org/t/p/w500/"+data.details.backdrop_path:icons.posterNot} alt="backdrop_path"/>
+                  <img src={data.details.backdrop_path?"https://image.tmdb.org/t/p/original/"+data.details.backdrop_path:icons.posterNot} alt="backdrop_path"/>
                </Col>
                <Layout.Content className={styles.header__footer}>
                   <div className={styles.header__footer__top}>
@@ -55,7 +55,7 @@ const Movie = () => {
             </Row>
             <Row className={styles.movie__poster}>
                <Col>
-                  <img src={data.details.poster_path?"https://image.tmdb.org/t/p/w500/"+data.details.poster_path:icons.notFound} alt="" />
+                  <img src={data.details.poster_path?"https://image.tmdb.org/t/p/original/"+data.details.poster_path:icons.notFound} alt="" />
                </Col>
                <Col>
                <Typography.Title className={styles.movie__poster__title}>{data.details.title}</Typography.Title>

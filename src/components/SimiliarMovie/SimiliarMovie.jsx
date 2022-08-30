@@ -1,10 +1,10 @@
-import React, {useEffect} from 'react';
-import styles from './similiarMovie.module.scss'
+import React from 'react';
 import { actions } from '../../store/actions/actionIndex';
 import { useDispatch, useSelector } from 'react-redux';
 import { Card, Col, Layout } from 'antd';
 import { icons } from 'antd/lib/image/PreviewGroup';
 import { Link, useLocation } from 'react-router-dom';
+import styles from './similiarMovie.module.scss'
 const SimiliarMovie = ({movie}) => {
    const dispatch = useDispatch()
    const {pathname} = useLocation()
