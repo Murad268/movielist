@@ -1,4 +1,4 @@
-import {LOAD, SEARCH, LOAD_DETAILS, LOAD_ON, LOAD_OFF, LOAD_SIMILIAR } from "./loadTypes";
+import {LOAD, SEARCH, LOAD_DETAILS, LOAD_ON, LOAD_OFF, LOAD_SIMILIAR, EMPTY_DETAILS } from "./loadTypes";
 import { ADD_FAVORITES, REMOVE_FAVORITES } from "./typeFavorites";
 import { ADD_WATCH_LIST, REMOVE_WATCH_LIST } from "./watchList";
 
@@ -12,5 +12,6 @@ export const types = {
    REMOVE_WATCH_LIST,
    LOAD_ON,
    LOAD_OFF,
-   LOAD_SIMILIAR
+   LOAD_SIMILIAR,
+   EMPTY_DETAILS
 }

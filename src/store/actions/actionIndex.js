@@ -1,6 +1,6 @@
 import {toast} from 'react-toastify'
 import { addFavorites, removeFavorites } from './favoritesActions';
-import { moviesLoad, searchMovie, loadDetails, loadSimiliars } from './loadActions';
+import { moviesLoad, searchMovie, loadDetails, loadSimiliars, emptyDetails } from './loadActions';
 import { addWatchList, removeWatchList } from './watchListActions';
 
 
@@ -22,5 +22,6 @@ export const actions = {
    deleteFromFavaritesVery,
    addWatchListVery,
    deleteFromWatchListVery,
-   loadSimiliars
+   loadSimiliars,
+   emptyDetails
 }

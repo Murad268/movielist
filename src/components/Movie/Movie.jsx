@@ -4,6 +4,7 @@ import { Layout, Row, Col, Typography } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { actions } from '../../store/actions/actionIndex';
 import { icons } from '../../utils/iconUtils';
+import gif from '../../assets/gif/Spin-1s-200px.svg'
 import Loading from '../Loading/Loading';
 import SimiliarMovies from '../SimiliarMovies/SimiliarMovies';
 import styles from './movie.module.scss';
@@ -16,10 +17,12 @@ const Movie = () => {
    const toTop = () => {
       document.documentElement.scrollTop = 0;
    }
-
+   let movieId = parseInt(id.match(/\d+/));
+   let movieCategory = id.replace(/[0-9]/g, '')
    useEffect(() => {
       toTop()
-      dispatch(actions.loadDetails(parseInt(id.match(/\d+/))))
+      dispatch(actions.emptyDetails())
+      dispatch(actions.loadDetails(movieId))
    }, [id]) // eslint-disable-line react-hooks/exhaustive-deps
    const data = useSelector(state => {
       return {
@@ -39,14 +42,22 @@ const Movie = () => {
    return (
       <Layout className={styles.col}>
          <div className={styles.layout}>
-            <Loading/>
             <Row className={styles.header}>
                <Col span={24}>
-                  <img src={data.details.backdrop_path?"https://image.tmdb.org/t/p/original/"+data.details.backdrop_path:icons.posterNot} alt="backdrop_path"/>
+                  {
+                     data.details.backdrop_path?
+                     <img src={"https://image.tmdb.org/t/p/original/"+data.details.backdrop_path} alt="" />
+                     :data.details.backdrop_path===null?
+                     <img src={icons.nothing} alt="" />
+                     :<div style={{"marginTop": "120px"}}>
+                         <Loading/>
+                     </div>
+                  }
+                  
                </Col>
                <Layout.Content className={styles.header__footer}>
                   <div className={styles.header__footer__top}>
-                     {id.replace(/[0-9]/g, '')} movies / {data.details?.title}
+                     {movieCategory} movies / {data.details?.title}
                   </div>
                   <div className={styles.header__footer__bottom}>
                      {data.details?.title}
@@ -55,7 +66,15 @@ const Movie = () => {
             </Row>
             <Row className={styles.movie__poster}>
                <Col>
-                  <img src={data.details.poster_path?"https://image.tmdb.org/t/p/original/"+data.details.poster_path:icons.notFound} alt="" />
+                  {
+                     data.details.poster_path?
+                     <img src={"https://image.tmdb.org/t/p/original/"+data.details.poster_path} alt="" />:
+                     data.details.poster_path === null?
+                     <img src={icons.notFound} alt="" />:
+                     <Loading/>
+
+                  }
+                  
                </Col>
                <Col>
                <Typography.Title className={styles.movie__poster__title}>{data.details.title}</Typography.Title>
@@ -91,7 +110,7 @@ const Movie = () => {
                </Layout.Content>
                </Col>
             </Row>
-            <SimiliarMovies id={parseInt(id.match(/\d+/))} name={data.details.title}/>
+            <SimiliarMovies id={movieId} name={data.details.title}/>
          </div>
       </Layout>
       

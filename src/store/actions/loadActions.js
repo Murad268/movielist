@@ -101,3 +101,8 @@ export function loadSimiliars(id) {
    }
 }
 
+export function emptyDetails() {
+   return {
+      type: types.EMPTY_DETAILS
+   }
+}
