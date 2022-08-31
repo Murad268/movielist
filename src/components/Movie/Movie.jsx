@@ -4,7 +4,6 @@ import { Layout, Row, Col, Typography } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { actions } from '../../store/actions/actionIndex';
 import { icons } from '../../utils/iconUtils';
-import gif from '../../assets/gif/Spin-1s-200px.svg'
 import Loading from '../Loading/Loading';
 import SimiliarMovies from '../SimiliarMovies/SimiliarMovies';
 import styles from './movie.module.scss';
