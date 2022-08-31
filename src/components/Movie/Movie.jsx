@@ -48,7 +48,7 @@ const Movie = () => {
                      data.details.backdrop_path?
                      <img src={"https://image.tmdb.org/t/p/original/"+data.details.backdrop_path} alt="" />
                      :data.details.backdrop_path===null?
-                     <img src={icons.nothing} alt="" />
+                     <img src={icons.posterNot} alt="" />
                      :<div style={{"marginTop": "120px"}}>
                          <Loading/>
                      </div>
